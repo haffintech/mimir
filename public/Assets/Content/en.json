@@ -1,0 +1,10 @@
+{
+  "content": {
+    "navbar": {
+      "home": "Home",
+      "about": "About",
+      "contact": "Contact",
+      "logout": "Logout"
+    }
+  }
+}
