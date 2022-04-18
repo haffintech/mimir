@@ -5,6 +5,13 @@
       "about": "About",
       "contact": "Contact",
       "logout": "Logout"
+    },
+    "welcome": {
+      "headline": "Welcome to Mimir!",
+      "teaser": "Mimir is a tool for scheduling and keeping records of your studying.",
+      "cta": "Get started today!",
+      "login": "Login",
+      "signup": "Sign up"
     }
   }
 }
