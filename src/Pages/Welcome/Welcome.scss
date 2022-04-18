@@ -1,0 +1,25 @@
+@import '../../sass/shared.scss';
+
+.welcome {
+  padding: 25px;
+
+  @include media-query('md') {
+    padding: 30px;
+  }
+
+  @include media-query('lg') {
+    padding: 40px;
+  }
+
+  &__teaser {
+    color: $textGray;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    margin: 40px 0;
+  }
+
+  &__signup {
+    margin-left: 25px;
+  }
+}
