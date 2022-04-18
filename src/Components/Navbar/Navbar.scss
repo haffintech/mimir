@@ -9,10 +9,22 @@
   justify-content: center;
   position: relative;
 
+  @include media-query('md') {
+    height: 65px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    width: 100%;
+  }
+
   &__menu {
     position: absolute;
     top: 16.5px;
     left: 25px;
+
+    @include media-query('md') {
+      display: none;
+    }
   }
 
   &__nav-container {
@@ -27,6 +39,15 @@
     &--active {
       left: 0;
     }
+
+    @include media-query('md') {
+      position: unset;
+      top: unset;
+      left: unset;
+      width: unset;
+      transition: unset;
+      height: 65px;
+    }
   }
 
   &__mobile-active-header {
@@ -35,6 +56,10 @@
     height: 60px;
     justify-content: space-between;
     padding: 0 25px;
+
+    @include media-query('md') {
+      display: none;
+    }
   }
 
   &__nav {
@@ -43,8 +68,21 @@
     color: #fff;
     font-size: 22px;
 
+    @include media-query('md') {
+      display: flex;
+      height: 65px;
+      margin: 0;
+      align-items: center;
+      padding: 0;
+    }
+
     &-item {
       margin-top: 15px;
+
+      @include media-query('md') {
+        margin-top: 0;
+        margin-left: 20px;
+      }
     }
   }
 
@@ -58,5 +96,11 @@
     left: 25px;
     color: #fff;
     font-size: 22px;
+
+    @include media-query('md') {
+      position: unset;
+      bottom: unset;
+      left: unset;
+    }
   }
 }
