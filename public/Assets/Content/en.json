@@ -12,6 +12,20 @@
       "cta": "Get started today!",
       "login": "Login",
       "signup": "Sign up"
+    },
+    "dashboard": {
+      "subjects": {
+        "subjectsDisplayer": {
+          "headline": "My subjects",
+          "addSubject": "Add a subject"
+        },
+        "addSubject": {
+          "nameLabel": "name",
+          "colorLabel": "Choose a color",
+          "cancel": "Cancel",
+          "saveSubject": "Save subject"
+        }
+      }
     }
   }
 }
