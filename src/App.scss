@@ -1,8 +1,15 @@
-@import '~bootstrap/scss/bootstrap';
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import './sass/shared.scss';
 
-*,
-.App {
+* {
   box-sizing: border-box;
+}
+
+.App {
+  @include media-query('md') {
+    background-color: $siteBackground;
+    min-height: 100vh;
+  }
 }
 
 h2 {

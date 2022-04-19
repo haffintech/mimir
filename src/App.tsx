@@ -6,6 +6,7 @@ import './App.scss';
 
 import Navbar from './Components/Navbar/Navbar';
 import Welcome from './Pages/Welcome/Welcome';
+import Dashboard from './Pages/Dashboard/Dashboard';
 
 function App() {
   const [content, setContent] = useState<any>(null);
@@ -34,7 +35,8 @@ function App() {
       <Navbar content={content.navbar} />
       <Router>
         <Routes>
-          <Route path='/welcome' element={<Welcome content={content.welcome} />} />
+          <Route path='/' element={<Welcome content={content.welcome} />} />
+          <Route path='/dashboard' element={<Dashboard content={content.dashboard} />} />
         </Routes>
       </Router>
     </div>
