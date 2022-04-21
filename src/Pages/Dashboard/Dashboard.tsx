@@ -9,7 +9,7 @@ import './Dashboard.scss';
 type props = {
   content: {
     subjects: {
-      subjectsDisplayer: {
+      subjectsPanel: {
         headline: string;
         addSubject: string;
       };

@@ -4,7 +4,7 @@ import SubjectCard from './SubjectCard/SubjectCard';
 
 import Subject from '../../../Types/Subject';
 
-import './SubjectsDisplayer.scss';
+import './SubjectsPanel.scss';
 
 type props = {
   content: {
@@ -14,7 +14,7 @@ type props = {
   subjects: Subject[];
 };
 
-const SubjectsDisplayer = (props: props) => {
+const SubjectsPanel = (props: props) => {
   // subject card that is used as a button for adding a subject
   const addSubject = {
     userId: props.subjects[0].userId,
@@ -43,4 +43,4 @@ const SubjectsDisplayer = (props: props) => {
   );
 };
 
-export default SubjectsDisplayer;
+export default SubjectsPanel;

@@ -1,14 +1,14 @@
 import React from 'react';
 
-import SubjectsDisplayer from './SubjectDisplayer/SubjectsDisplayer';
+import SubjectsPanel from './SubjectPanel/SubjectsPanel';
 
 import Subject from '../../Types/Subject';
 
 import './Subjects.scss';
 
-type props = {
+type Props = {
   content: {
-    subjectsDisplayer: {
+    subjectsPanel: {
       headline: string;
       addSubject: string;
     };
@@ -22,10 +22,10 @@ type props = {
   subjects: Subject[];
 };
 
-const Subjects = (props: props) => {
+const Subjects = (props: Props) => {
   return (
     <div className='subjects'>
-      <SubjectsDisplayer content={props.content.subjectsDisplayer} subjects={props.subjects} />
+      <SubjectsPanel content={props.content.subjectsPanel} subjects={props.subjects} />
     </div>
   );
 };

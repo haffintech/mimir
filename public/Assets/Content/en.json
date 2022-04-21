@@ -15,7 +15,7 @@
     },
     "dashboard": {
       "subjects": {
-        "subjectsDisplayer": {
+        "subjectsPanel": {
           "headline": "My subjects",
           "addSubject": "Add a subject"
         },
