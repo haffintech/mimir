@@ -33,12 +33,14 @@ function App() {
   return (
     <div className='App'>
       <Navbar content={content.navbar} />
-      <Router>
-        <Routes>
-          <Route path='/' element={<Welcome content={content.welcome} />} />
-          <Route path='/dashboard' element={<Dashboard content={content.dashboard} />} />
-        </Routes>
-      </Router>
+      <div className='custom-container'>
+        <Router>
+          <Routes>
+            <Route path='/' element={<Welcome content={content.welcome} />} />
+            <Route path='/dashboard' element={<Dashboard content={content.dashboard} />} />
+          </Routes>
+        </Router>
+      </div>
     </div>
   );
 }
