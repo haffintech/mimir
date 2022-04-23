@@ -7,4 +7,8 @@
   @include media-query('md') {
     padding: 35px 0;
   }
+
+  &__subjects-container {
+    margin-bottom: 25px;
+  }
 }

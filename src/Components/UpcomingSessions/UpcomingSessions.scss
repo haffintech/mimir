@@ -1,0 +1,32 @@
+@import '../../sass/shared.scss';
+
+.upcoming-sessions {
+  background-color: #fff;
+
+  &__headline {
+    margin-bottom: 25px;
+
+    @include media-query('md') {
+      background-color: $siteBackground;
+      margin-bottom: 0;
+      padding-bottom: 15px;
+    }
+  }
+  &__card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include media-query('md') {
+      flex-direction: unset;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      place-items: center;
+      padding-top: 30px;
+    }
+
+    @include media-query('lg') {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}

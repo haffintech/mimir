@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ReactComponent as IconPlus } from '../../../../assets/icons/plus.svg';
 
-import Subject from '../../../../Types/Subject';
+import { Subject } from '../../../../Types/Subject';
 
 import './SubjectCard.scss';
 

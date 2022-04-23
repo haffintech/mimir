@@ -61,4 +61,49 @@ const mockSubjects = [
   },
 ];
 
-export { mockSubjects };
+const mockScheduledSessions = [
+  {
+    id: '1',
+    userId: '1',
+    subjectId: '1',
+    date: '2022-04-23T12:00:00.000Z',
+    learningTechnique: 1,
+  },
+  {
+    id: '2',
+    userId: '1',
+    subjectId: '1',
+    date: '2022-05-01T12:00:00.000Z',
+    learningTechnique: 3,
+  },
+  {
+    id: '3',
+    userId: '1',
+    subjectId: '1',
+    date: '2022-05-23T12:00:00.000Z',
+    learningTechnique: 2,
+  },
+  {
+    id: '4',
+    userId: '1',
+    subjectId: '1',
+    date: '2022-04-13T12:00:00.000Z',
+    learningTechnique: 7,
+  },
+  {
+    id: '5',
+    userId: '1',
+    subjectId: '1',
+    date: '2022-03-23T12:00:00.000Z',
+    learningTechnique: 5,
+  },
+  {
+    id: '6',
+    userId: '1',
+    subjectId: '1',
+    date: '2022-05-13T12:00:00.000Z',
+    learningTechnique: 3,
+  },
+];
+
+export { mockSubjects, mockScheduledSessions };
