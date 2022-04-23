@@ -1,0 +1,18 @@
+@import '../../../sass/shared.scss';
+
+.add-subject {
+  padding: 20px;
+
+  &__label {
+    margin-top: 25px;
+    font-size: 18px;
+    font-weight: 600;
+    color: $textGray;
+    line-height: 21px;
+  }
+
+  &__button-group {
+    display: flex;
+    justify-content: space-between;
+  }
+}

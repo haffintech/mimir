@@ -15,15 +15,24 @@
     },
     "dashboard": {
       "subjects": {
-        "subjectsPanel": {
-          "headline": "My subjects",
-          "addSubject": "Add a subject"
-        },
-        "addSubject": {
-          "nameLabel": "name",
+        "headline": "My subjects",
+        "addSubject": "Add a subject",
+        "addSubjects": {
+          "nameLabel": "Name",
           "colorLabel": "Choose a color",
           "cancel": "Cancel",
-          "saveSubject": "Save subject"
+          "saveSubject": "Save subject",
+          "colorCodes": [
+            "#37c81b",
+            "#4d4dff",
+            "#ff531a",
+            "#ae0624",
+            "#24700a",
+            "#00708a",
+            "#f7dc00",
+            "#1b222c",
+            "#8e37e0"
+          ]
         }
       }
     }

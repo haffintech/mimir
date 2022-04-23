@@ -1,8 +1,8 @@
 @import '../../../sass/shared.scss';
 
-.subjects-displayer {
+.subjects-panel {
   @include media-query('md') {
-    height: 260px;
+    height: 280px;
   }
 
   &__cards-container {

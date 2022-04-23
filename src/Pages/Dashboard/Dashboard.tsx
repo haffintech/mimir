@@ -6,27 +6,26 @@ import { mockSubjects } from '../../mockdata';
 
 import './Dashboard.scss';
 
-type props = {
+type Props = {
   content: {
     subjects: {
-      subjectsPanel: {
-        headline: string;
-        addSubject: string;
-      };
-      addSubject: {
+      headline: string;
+      addSubject: string;
+      addSubjects: {
         nameLabel: string;
         colorLabel: string;
         cancel: string;
         saveSubject: string;
+        colorCodes: string[];
       };
     };
   };
 };
 
-const Dashboard = (props: props) => {
+const Dashboard = ({ content }: Props) => {
   return (
     <div className='dashboard'>
-      <Subjects content={props.content.subjects} subjects={mockSubjects} />
+      <Subjects content={content.subjects} subjects={mockSubjects} />
     </div>
   );
 };

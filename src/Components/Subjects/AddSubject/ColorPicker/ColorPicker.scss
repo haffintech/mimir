@@ -1,0 +1,23 @@
+@import '../../../../sass/shared.scss';
+
+.color-picker {
+  width: 100%;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  &__color-box {
+    width: 75px;
+    height: 75px;
+    transition: opacity 0.5s;
+
+    &.selected {
+      box-shadow: 1px 3px 2px #aaa;
+    }
+    &.not-selected {
+      opacity: 0.25;
+    }
+  }
+}

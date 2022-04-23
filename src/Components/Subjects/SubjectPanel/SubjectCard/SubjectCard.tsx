@@ -6,15 +6,20 @@ import Subject from '../../../../Types/Subject';
 
 import './SubjectCard.scss';
 
-type props = {
+type Props = {
   subject: Subject;
   side: string;
   isAddSubject?: boolean;
+  onClick: (id: string) => void;
 };
 
-const SubjectCard = (props: props) => {
+const SubjectCard = (props: Props) => {
+  const onClick = () => {
+    props.onClick(props.subject.id);
+  };
+
   return (
-    <div className={`subject-card ${props.side}`}>
+    <div className={`subject-card ${props.side}`} onClick={onClick}>
       <div className='subject-card__color-box' style={{ backgroundColor: props.subject.colorCode }}>
         {props.isAddSubject && <IconPlus className='subject-card__plus-icon' />}
       </div>

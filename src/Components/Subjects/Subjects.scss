@@ -1,0 +1,16 @@
+@import '../../sass/shared.scss';
+.subjects {
+  &__header-container {
+    display: flex;
+    margin-bottom: 25px;
+  }
+
+  &__headline {
+    margin-right: 25px;
+  }
+
+  &__popover {
+    max-width: unset !important;
+    width: 340px;
+  }
+}
