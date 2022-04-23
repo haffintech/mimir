@@ -7,7 +7,7 @@ import Popover from 'react-bootstrap/Popover';
 import SubjectsPanel from './SubjectPanel/SubjectsPanel';
 import AddSubject from './AddSubject/AddSubject';
 
-import Subject from '../../Types/Subject';
+import { Subject } from '../../Types/Subject';
 import useViewportResize from '../../utils/hooks/useViewportResize';
 import { breakpoints } from '../../utils/misc/breakpoints';
 import './Subjects.scss';

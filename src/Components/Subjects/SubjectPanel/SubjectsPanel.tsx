@@ -2,7 +2,7 @@ import React from 'react';
 
 import SubjectCard from './SubjectCard/SubjectCard';
 
-import Subject from '../../../Types/Subject';
+import { Subject } from '../../../Types/Subject';
 
 import './SubjectsPanel.scss';
 

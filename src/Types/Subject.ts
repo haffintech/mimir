@@ -5,4 +5,4 @@ type Subject = {
   colorCode: string;
 };
 
-export default Subject;
+export type { Subject };
