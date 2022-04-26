@@ -1,11 +1,43 @@
-@import '~bootstrap/scss/bootstrap';
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import './sass/shared.scss';
 
-*,
-.App {
+* {
   box-sizing: border-box;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include media-query('md') {
+    background-color: $siteBackground;
+    min-height: 100vh;
+  }
+
+  .custom-container {
+    width: 320px;
+
+    @include media-query('sm') {
+      width: 360px;
+    }
+
+    @include media-query('md') {
+      width: 708px;
+    }
+
+    @include media-query('lg') {
+      width: 1140px;
+    }
+  }
 }
 
 h2 {
   font-size: 28px;
   font-weight: 700;
+}
+
+p {
+  font-size: 18px;
+  line-height: 21px;
 }

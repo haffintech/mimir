@@ -1,0 +1,53 @@
+@import '../../../sass/shared.scss';
+
+.upcoming-session-card {
+  border: 1px solid $siteBackground;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 30px;
+  width: 300px;
+
+  @include media-query('sm') {
+    width: $sm-container;
+  }
+
+  @include media-query('md') {
+    width: 310px;
+  }
+
+  &__subject {
+    font-size: 24px;
+    line-height: 28px;
+    color: $textGray;
+    font-weight: 700;
+    margin: 0 0 5px;
+  }
+
+  &__topic {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 400;
+    margin: 0 0 15px;
+  }
+
+  &__technique-label {
+    margin: 0 0 5px;
+  }
+
+  &__technique {
+    font-weight: 600;
+    margin: 0 0 15px;
+  }
+
+  &__due-date {
+    &--due-past {
+      color: $alarm;
+    }
+  }
+
+  &__button-group {
+    display: flex;
+    justify-content: space-between;
+  }
+}

@@ -13,17 +13,29 @@
     height: 65px;
     align-items: center;
     justify-content: space-between;
-    padding: 0 30px;
+    padding: 0 calc((100vw - $md-container) / 2);
     width: 100%;
+  }
+
+  @include media-query('lg') {
+    padding: 0 calc((100vw - $lg-container) / 2);
   }
 
   &__menu {
     position: absolute;
     top: 16.5px;
-    left: 25px;
+    left: calc((100vw - $min-container) / 2);
+
+    @include media-query('sm') {
+      left: calc((100vw - $sm-container) / 2);
+    }
 
     @include media-query('md') {
       display: none;
+    }
+
+    @media (min-width: 450px) {
+      left: 25px;
     }
   }
 

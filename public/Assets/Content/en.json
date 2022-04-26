@@ -1,4 +1,38 @@
 {
+  "learningTechniques": [
+    {
+      "id": "1",
+      "name": "Make a mindmap"
+    },
+    {
+      "id": "2",
+      "name": "Summarize notes"
+    },
+    {
+      "id": "3",
+      "name": "Create your own exam questions"
+    },
+    {
+      "id": "4",
+      "name": "Answer (your own) exam questions"
+    },
+    {
+      "id": "5",
+      "name": "Teach the topic"
+    },
+    {
+      "id": "6",
+      "name": "Compare to related topics"
+    },
+    {
+      "id": "7",
+      "name": "Solve practice papers/problems"
+    },
+    {
+      "id": "8",
+      "name": "Put into real-world context"
+    }
+  ],
   "content": {
     "navbar": {
       "home": "Home",
@@ -12,6 +46,37 @@
       "cta": "Get started today!",
       "login": "Login",
       "signup": "Sign up"
+    },
+    "dashboard": {
+      "subjects": {
+        "headline": "My subjects",
+        "addSubject": "Add a subject",
+        "addSubjects": {
+          "nameLabel": "Name",
+          "colorLabel": "Choose a color",
+          "cancel": "Cancel",
+          "saveSubject": "Save subject",
+          "colorCodes": [
+            "#37c81b",
+            "#4d4dff",
+            "#ff531a",
+            "#ae0624",
+            "#24700a",
+            "#00708a",
+            "#f7dc00",
+            "#1b222c",
+            "#8e37e0"
+          ]
+        }
+      },
+      "upcomingSessions": {
+        "headline": "Upcoming sessions",
+        "sessionCardContent": {
+          "recommendedTechnique": "Recommended learning technique",
+          "reschedule": "Reschedule",
+          "addSessionNow": "Add session now"
+        }
+      }
     }
   }
 }

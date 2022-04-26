@@ -1,0 +1,14 @@
+@import '../../sass/shared.scss';
+
+.dashboard {
+  padding: 30px 0;
+  height: 100%;
+
+  @include media-query('md') {
+    padding: 35px 0;
+  }
+
+  &__subjects-container {
+    margin-bottom: 25px;
+  }
+}

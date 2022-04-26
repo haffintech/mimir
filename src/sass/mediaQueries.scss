@@ -1,4 +1,10 @@
 @mixin media-query($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (min-width: 375px) {
+      @content;
+    }
+  }
+
   @if $breakpoint == 'md' {
     @media (min-width: 768px) {
       @content;
