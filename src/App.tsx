@@ -36,11 +36,18 @@ function App() {
 
   if (isLoading) return null;
 
+  const navLinks = {
+    home: '/dashboard',
+    about: '/about',
+    contact: '/contact',
+    upcomingSessions: '/upcoming-sessions',
+  };
+
   return (
     <div className='App'>
-      <Navbar content={content.navbar} />
-      <div className='custom-container'>
-        <Router>
+      <Router>
+        <Navbar content={content.navbar} links={navLinks} />
+        <div className='custom-container'>
           <Routes>
             <Route path='/' element={<Welcome content={content.welcome} />} />
             <Route
@@ -63,9 +70,14 @@ function App() {
                 />
               }
             />
+            <Route path='/topics' element={<></>}>
+              <Route path='/topics/:topicId' element={<></>} />
+            </Route>
+            <Route path='/about' element={<></>} />
+            <Route path='/contact' element={<></>} />
           </Routes>
-        </Router>
-      </div>
+        </div>
+      </Router>
     </div>
   );
 }
