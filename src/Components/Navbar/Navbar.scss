@@ -75,13 +75,14 @@
   }
 
   &__nav {
-    list-style-type: none;
-    padding-inline-start: 25px;
+    padding-left: 25px;
     color: #fff;
     font-size: 22px;
+    display: flex;
+    flex-direction: column;
 
     @include media-query('md') {
-      display: flex;
+      flex-direction: row;
       height: 65px;
       margin: 0;
       align-items: center;
@@ -90,29 +91,20 @@
 
     &-item {
       margin-top: 15px;
+      color: #fff;
+      font-size: 22px;
+      text-decoration: none;
+
+      &:hover {
+        color: unset;
+        transform: translateY(-1px);
+        transition: transform 0.2s;
+      }
 
       @include media-query('md') {
         margin-top: 0;
         margin-left: 20px;
       }
-    }
-  }
-
-  &__logout {
-    background-color: inherit;
-    border: 1px solid #fff;
-    border-radius: 5px;
-    padding: 7px 12px;
-    position: absolute;
-    bottom: 20px;
-    left: 25px;
-    color: #fff;
-    font-size: 22px;
-
-    @include media-query('md') {
-      position: unset;
-      bottom: unset;
-      left: unset;
     }
   }
 }
