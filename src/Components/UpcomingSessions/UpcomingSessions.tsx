@@ -4,6 +4,9 @@ import SessionCard from './SessionCard/SessionCard';
 
 import { scheduledSession } from '../../Types/Session';
 
+import { RootState } from '../../reduxSetup/store';
+import { useAppSelector } from '../../reduxSetup/hooks';
+
 import './UpcomingSessions.scss';
 
 type Props = {
@@ -23,8 +26,21 @@ type Props = {
 };
 
 const UpcomingSessions = ({ content, upcomingSessions }: Props) => {
+  const subjects = useAppSelector((state: RootState) => state.subjects.subjects);
+
   const sessionCards = upcomingSessions.map((session) => {
-    return <SessionCard key={session.id} session={session} content={content.sessionCardContent} />;
+    const sessionSubject = subjects.filter((subject) => subject.id === session.subjectId);
+    const subjectName = sessionSubject[0].name;
+    const topicName = 'topic';
+    return (
+      <SessionCard
+        key={session.id}
+        session={session}
+        content={content.sessionCardContent}
+        topicName={topicName}
+        subjectName={subjectName}
+      />
+    );
   });
   return (
     <div className='upcoming-sessions'>

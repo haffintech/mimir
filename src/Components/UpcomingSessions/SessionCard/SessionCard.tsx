@@ -12,18 +12,19 @@ type Props = {
     reschedule: string;
     addSessionNow: string;
   };
+  subjectName: string;
+  topicName: string;
 };
-const SessionCard = ({ session, content }: Props) => {
+const SessionCard = ({ session, content, subjectName, topicName }: Props) => {
   const dueDate = new Date(session.date);
-
   const dueDateClassname = classNames({
     'upcoming-session-card__due-date': true,
     'upcoming-session-card__due-date--due-past': dueDate.getTime() < new Date().getTime(),
   });
   return (
     <div className='upcoming-session-card'>
-      <h3 className='upcoming-session-card__subject'>Subject</h3>
-      <h5 className='upcoming-session-card__topic'>Topic</h5>
+      <h3 className='upcoming-session-card__subject'>{subjectName}</h3>
+      <h5 className='upcoming-session-card__topic'>{topicName}</h5>
       <p className='upcoming-session-card__technique-label'>{content.recommendedTechnique}</p>
       <p className='upcoming-session-card__technique'>{session.learningTechnique}</p>
       <p className={dueDateClassname}>{`Due ${dueDate.toLocaleDateString()}`}</p>
