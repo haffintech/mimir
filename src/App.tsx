@@ -8,20 +8,24 @@ import Navbar from './Components/Navbar/Navbar';
 import Welcome from './Pages/Welcome/Welcome';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import UpcomingSessions from './Components/UpcomingSessions/UpcomingSessions';
-import { mockScheduledSessions } from './mockdata';
+import { useAppSelector } from './reduxSetup/hooks';
+import { RootState } from './reduxSetup/store';
 
 function App() {
   const [content, setContent] = useState<any>(null);
   const [isLoading, setIsLoading] = useState<Boolean>(true);
+  const scheduledSessions = useAppSelector(
+    (state: RootState) => state.scheduledSessions.scheduledSessions
+  );
 
   const getContent = async () => {
     const data = await fetch('/Assets/Content/en.json');
     const fetchedContent = await data.json();
-    return fetchedContent;
+    setContent(fetchedContent.content);
   };
 
   useEffect(() => {
-    getContent().then((data) => setContent(data.content));
+    getContent();
   }, []);
 
   useEffect(() => {
@@ -55,7 +59,7 @@ function App() {
                     ...content.dashboard.upcomingSessions,
                     learningTechniques: content.learningTechniques,
                   }}
-                  upcomingSessions={mockScheduledSessions}
+                  upcomingSessions={scheduledSessions}
                 />
               }
             />
