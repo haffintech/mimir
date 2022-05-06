@@ -1,5 +1,6 @@
 import { Subject } from './Types/Subject';
-import { scheduledSession } from './Types/Session';
+import { ScheduledSession } from './Types/Session';
+import { Topic } from './Types/Topic';
 
 const mockSubjects: Subject[] = [
   {
@@ -54,43 +55,72 @@ const mockSubjects: Subject[] = [
   },
 ];
 
-const mockScheduledSessions: scheduledSession[] = [
+const mockScheduledSessions: ScheduledSession[] = [
   {
     id: '1',
     subjectId: '1',
+    topicId: '1',
     date: '2022-04-23T12:00:00.000Z',
     learningTechnique: 1,
   },
   {
     id: '2',
     subjectId: '1',
+    topicId: '2',
     date: '2022-05-01T12:00:00.000Z',
     learningTechnique: 3,
   },
   {
     id: '3',
     subjectId: '1',
+    topicId: '3',
     date: '2022-05-23T12:00:00.000Z',
     learningTechnique: 2,
   },
   {
     id: '4',
     subjectId: '1',
+    topicId: '4',
     date: '2022-04-13T12:00:00.000Z',
     learningTechnique: 7,
   },
   {
     id: '5',
     subjectId: '1',
+    topicId: '5',
     date: '2022-03-23T12:00:00.000Z',
     learningTechnique: 5,
   },
   {
     id: '6',
     subjectId: '1',
+    topicId: '6',
     date: '2022-05-13T12:00:00.000Z',
     learningTechnique: 3,
   },
 ];
 
-export { mockSubjects, mockScheduledSessions };
+const mockTopics: Topic[] = [
+  {
+    id: '1',
+    name: 'integrals',
+    subjectId: '1',
+  },
+  {
+    id: '2',
+    name: 'fourier-transformation',
+    subjectId: '1',
+  },
+  {
+    id: '3',
+    name: 'differential equations',
+    subjectId: '1',
+  },
+  {
+    id: '4',
+    name: 'interpolations',
+    subjectId: '1',
+  },
+];
+
+export { mockSubjects, mockScheduledSessions, mockTopics };

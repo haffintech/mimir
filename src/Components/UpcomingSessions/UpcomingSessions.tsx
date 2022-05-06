@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import SessionCard from './SessionCard/SessionCard';
 
-import { scheduledSession } from '../../Types/Session';
+import { ScheduledSession } from '../../Types/Session';
 
 import { RootState } from '../../reduxSetup/store';
 import { useAppSelector } from '../../reduxSetup/hooks';
@@ -22,7 +22,7 @@ type Props = {
       recommendedTechnique: string;
     };
   };
-  upcomingSessions: scheduledSession[];
+  upcomingSessions: ScheduledSession[];
 };
 
 const UpcomingSessions = ({ content, upcomingSessions }: Props) => {
