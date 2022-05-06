@@ -1,7 +1,7 @@
 type ScheduledSession = {
   id: string;
   subjectId: string;
-  topicId?: string; // in dev optional
+  topicId: string;
   date: string;
   learningTechnique: number;
 };

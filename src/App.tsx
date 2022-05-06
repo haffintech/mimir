@@ -8,6 +8,8 @@ import Navbar from './Components/Navbar/Navbar';
 import Welcome from './Pages/Welcome/Welcome';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import UpcomingSessions from './Components/UpcomingSessions/UpcomingSessions';
+import TopicOverview from './Pages/TopicOverview/TopicOverview';
+
 import { useAppSelector } from './reduxSetup/hooks';
 import { RootState } from './reduxSetup/store';
 
@@ -70,8 +72,8 @@ function App() {
                 />
               }
             />
-            <Route path='/topics' element={<></>}>
-              <Route path='/topics/:topicId' element={<></>} />
+            <Route path='/topics/:subjectId' element={<TopicOverview content={content.topics} />}>
+              <Route path='/topics/:subjectId/:topicId' element={<></>} />
             </Route>
             <Route path='/about' element={<></>} />
             <Route path='/contact' element={<></>} />

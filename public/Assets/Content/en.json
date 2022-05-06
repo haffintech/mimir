@@ -77,6 +77,16 @@
           "addSessionNow": "Add session now"
         }
       }
+    },
+    "topics": {
+      "addTopicButton": "Add a topic",
+      "topicCards": {
+        "totalRevisionsLabel": "Total revisions:",
+        "techniqueLabel": "Recommended learning technique:",
+        "dueLabel": "Due",
+        "rescheduleButton": "Reschedule",
+        "addSessionButton": "Add session now"
+      }
     }
   }
 }

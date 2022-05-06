@@ -1,0 +1,21 @@
+@import '../../sass/shared.scss';
+
+.topic-panel {
+  display: flex;
+  flex-direction: column;
+
+  @include media-query('md') {
+    background-color: #fff;
+    padding: 25px;
+    flex-direction: unset;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+  }
+
+  @include media-query('lg') {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 30px;
+    gap: 30px;
+  }
+}
