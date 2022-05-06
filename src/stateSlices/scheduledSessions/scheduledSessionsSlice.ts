@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { mockScheduledSessions } from '../../mockdata';
-import { scheduledSession } from '../../Types/Session';
+import { ScheduledSession } from '../../Types/Session';
 
 interface scheduledSessionsState {
-  scheduledSessions: scheduledSession[];
+  scheduledSessions: ScheduledSession[];
 }
 
 const initialState: scheduledSessionsState = {
@@ -13,14 +13,14 @@ const initialState: scheduledSessionsState = {
 /* reducers */
 const addScheduledSessionReducer = (
   state: scheduledSessionsState,
-  action: PayloadAction<scheduledSession>
+  action: PayloadAction<ScheduledSession>
 ) => {
   state.scheduledSessions.push(action.payload);
 };
 
 const deleteScheduledSessionReducer = (
   state: scheduledSessionsState,
-  action: PayloadAction<scheduledSession>
+  action: PayloadAction<ScheduledSession>
 ) => {
   const index = state.scheduledSessions.indexOf(action.payload);
   if (index > -1) state.scheduledSessions.splice(index, 1);

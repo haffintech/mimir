@@ -1,12 +1,12 @@
 import * as React from 'react';
 import Button from 'react-bootstrap/Button';
 import classNames from 'classnames';
-import { scheduledSession } from '../../../Types/Session';
+import { ScheduledSession } from '../../../Types/Session';
 
 import './SessionCard.scss';
 
 type Props = {
-  session: scheduledSession;
+  session: ScheduledSession;
   content: {
     recommendedTechnique: string;
     reschedule: string;
