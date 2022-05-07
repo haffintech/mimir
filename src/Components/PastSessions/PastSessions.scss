@@ -1,0 +1,23 @@
+@import '../../sass/shared.scss';
+
+.past-sessions {
+  margin-top: 20px;
+
+  @include media-query('md') {
+    background-color: #fff;
+    padding: 20px;
+  }
+
+  @include media-query('lg') {
+    padding: 30px;
+  }
+
+  &__sessions-container {
+    @include media-query('lg') {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      place-items: center;
+      gap: 30px;
+    }
+  }
+}

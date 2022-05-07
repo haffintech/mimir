@@ -1,5 +1,5 @@
 import { Subject } from './Types/Subject';
-import { ScheduledSession } from './Types/Session';
+import { ScheduledSession, SavedSession } from './Types/Session';
 import { Topic } from './Types/Topic';
 
 const mockSubjects: Subject[] = [
@@ -123,4 +123,67 @@ const mockTopics: Topic[] = [
   },
 ];
 
-export { mockSubjects, mockScheduledSessions, mockTopics };
+const mockSavedSessions: SavedSession[] = [
+  {
+    id: '1',
+    subjectId: '1',
+    topicId: '1',
+    date: '2022-04-23T12:00:00.000Z',
+    learningTechnique: 1,
+    retention: 1,
+    feedback:
+      'I had very good retention but struggled with recall times. I have to practice fast recalling before my exam.',
+  },
+  {
+    id: '2',
+    subjectId: '1',
+    topicId: '2',
+    date: '2022-05-01T12:00:00.000Z',
+    learningTechnique: 3,
+    retention: 2,
+    feedback:
+      'I had very good retention but struggled with recall times. I have to practice fast recalling before my exam.',
+  },
+  {
+    id: '3',
+    subjectId: '1',
+    topicId: '3',
+    date: '2022-05-23T12:00:00.000Z',
+    learningTechnique: 2,
+    retention: 3,
+    feedback:
+      'I had very good retention but struggled with recall times. I have to practice fast recalling before my exam.',
+  },
+  {
+    id: '4',
+    subjectId: '1',
+    topicId: '4',
+    date: '2022-04-13T12:00:00.000Z',
+    learningTechnique: 7,
+    retention: 4,
+    feedback:
+      'I had very good retention but struggled with recall times. I have to practice fast recalling before my exam.',
+  },
+  {
+    id: '5',
+    subjectId: '1',
+    topicId: '1',
+    date: '2022-03-23T12:00:00.000Z',
+    learningTechnique: 5,
+    retention: 1,
+    feedback:
+      'I had very good retention but struggled with recall times. I have to practice fast recalling before my exam.',
+  },
+  {
+    id: '6',
+    subjectId: '1',
+    topicId: '1',
+    date: '2022-04-23T12:00:00.000Z',
+    learningTechnique: 1,
+    retention: 1,
+    feedback:
+      'I had very good retention but struggled with recall times. I have to practice fast recalling before my exam.',
+  },
+];
+
+export { mockSubjects, mockScheduledSessions, mockTopics, mockSavedSessions };

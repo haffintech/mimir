@@ -1,0 +1,8 @@
+@import '../../sass/shared.scss';
+
+.topic-stats {
+  @include media-query('md') {
+    background-color: #fff;
+    padding: 20px;
+  }
+}
