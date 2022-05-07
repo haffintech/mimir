@@ -130,7 +130,7 @@ const mockSavedSessions: SavedSession[] = [
     topicId: '1',
     date: '2022-04-23T12:00:00.000Z',
     learningTechnique: 1,
-    retention: 1,
+    retention: 3,
     feedback:
       'I had very good retention but struggled with recall times. I have to practice fast recalling before my exam.',
   },
@@ -170,7 +170,7 @@ const mockSavedSessions: SavedSession[] = [
     topicId: '1',
     date: '2022-03-23T12:00:00.000Z',
     learningTechnique: 5,
-    retention: 1,
+    retention: 2,
     feedback:
       'I had very good retention but struggled with recall times. I have to practice fast recalling before my exam.',
   },
@@ -180,7 +180,7 @@ const mockSavedSessions: SavedSession[] = [
     topicId: '1',
     date: '2022-04-23T12:00:00.000Z',
     learningTechnique: 1,
-    retention: 1,
+    retention: 4,
     feedback:
       'I had very good retention but struggled with recall times. I have to practice fast recalling before my exam.',
   },

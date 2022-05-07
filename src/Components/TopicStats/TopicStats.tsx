@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { learningTechniques } from '../../utils/misc/learningTechniques';
+
 import './TopicStats.scss';
 
 type Props = {
@@ -12,12 +14,16 @@ type Props = {
   topicData: {
     countRevisions: number;
     nextRevision: Date;
-    nextTechnique: string;
+    nextTechnique: number;
   };
 };
 
 const TopicStats = ({ content, topicData }: Props) => {
   const dateString = topicData.nextRevision.toLocaleDateString();
+
+  const learningTechnique = learningTechniques.filter(
+    (technique) => technique.id === topicData.nextTechnique
+  );
 
   return (
     <div className='topic-stats'>
@@ -25,7 +31,7 @@ const TopicStats = ({ content, topicData }: Props) => {
       <p className='topic-stats__next-revision'>{`${content.nextRevisionLabel} ${dateString}`}</p>
       <p className='topic-stats__suggested-technique'>
         {content.suggestedTechniqueA}
-        <strong>{topicData.nextTechnique}</strong>
+        <strong>{learningTechnique[0].name}</strong>
         {content.suggestedTechniqueB}
       </p>
     </div>

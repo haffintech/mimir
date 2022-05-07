@@ -1,11 +1,16 @@
 @import '../../../../sass/shared.scss';
 
 .subject-card {
+  cursor: pointer;
   width: 100%;
   display: flex;
   flex-direction: column;
   background-color: $containerBackground;
   margin-bottom: 15px;
+
+  &:hover {
+    opacity: 0.75;
+  }
 
   @include media-query('md') {
     margin-bottom: unset;

@@ -74,7 +74,7 @@ const TopicDetails = ({ content }: Props) => {
   const topicData = {
     countRevisions: topicSessions.length,
     nextRevision: new Date(nextSession.date),
-    nextTechnique: nextSession.learningTechnique.toString(),
+    nextTechnique: nextSession.learningTechnique,
   };
 
   const toggleModal = () => {
