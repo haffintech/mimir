@@ -8,8 +8,16 @@
   border: 2px solid $siteBackground;
   margin-bottom: 25px;
 
+  &:hover {
+    background-color: $siteBackground;
+  }
+
   @include media-query('md') {
     margin-bottom: 0;
+  }
+
+  &__container {
+    cursor: pointer;
   }
 
   &__wrapping-button {
