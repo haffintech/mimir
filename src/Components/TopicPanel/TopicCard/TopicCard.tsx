@@ -17,9 +17,10 @@ type Props = {
   };
   topic: Topic;
   nextSession: ScheduledSession;
+  onTopicClick: (topic: Topic) => void;
 };
 
-const TopicCard = ({ content, topic, nextSession }: Props) => {
+const TopicCard = ({ content, topic, nextSession, onTopicClick }: Props) => {
   const today = new Date().getTime();
   const sessionDate = new Date(nextSession.date).getTime();
   const isSessionDue = today > sessionDate;
@@ -31,18 +32,36 @@ const TopicCard = ({ content, topic, nextSession }: Props) => {
     'topic__due-date--is-due': isSessionDue,
   });
 
+  const onClick = () => {
+    onTopicClick(topic);
+  };
+
+  const onReschedule = () => {
+    console.log('reschedule');
+  };
+
+  const onAddSession = () => {
+    console.log('add session');
+  };
   return (
     <div className='topic'>
-      <h4 className='topic__name'>{topic.name}</h4>
-      <p className='topic__total-revisions'>{content.totalRevisionsLabel}</p>
-      <p className='topic__technique-label'>{content.techniqueLabel}</p>
-      <p className='topic__next-technique'>{nextSession.learningTechnique}</p>
-      <p className={dueDateClassName}>{`${content.dueLabel} ${formattedSessionDate}`}</p>
+      <div className='topic__container' onClick={onClick}>
+        <h4 className='topic__name'>{topic.name}</h4>
+        <p className='topic__total-revisions'>{content.totalRevisionsLabel}</p>
+        <p className='topic__technique-label'>{content.techniqueLabel}</p>
+        <p className='topic__next-technique'>{nextSession.learningTechnique}</p>
+        <p className={dueDateClassName}>{`${content.dueLabel} ${formattedSessionDate}`}</p>
+      </div>
       <div className='topic__button-container'>
-        <Button size='sm' variant='outline-secondary' className='topic__reschedule-button'>
+        <Button
+          size='sm'
+          variant='outline-secondary'
+          className='topic__reschedule-button'
+          onClick={onReschedule}
+        >
           {content.rescheduleButton}
         </Button>
-        <Button size='sm' className='topic__add-session-button'>
+        <Button size='sm' className='topic__add-session-button' onClick={onAddSession}>
           {content.addSessionButton}
         </Button>
       </div>
