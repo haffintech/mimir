@@ -104,6 +104,33 @@
           "retentionSuffix": "retention",
           "feedbackLabel": "Your personal feedback:"
         }
+      },
+      "addSession": {
+        "headline": "Add study session",
+        "dateLabel": "Date",
+        "feedbackLabel": "Leave yourself some feedback",
+        "techniqueLabel": "Learning technique",
+        "retentionLabel": "Rate your retention",
+        "cancelButton": "Cancel",
+        "saveButton": "Save session",
+        "retentionButtons": [
+          {
+            "value": "1",
+            "text": "25%"
+          },
+          {
+            "value": "2",
+            "text": "50%"
+          },
+          {
+            "value": "3",
+            "text": "75%"
+          },
+          {
+            "value": "4",
+            "text": "100%"
+          }
+        ]
       }
     }
   }

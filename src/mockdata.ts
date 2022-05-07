@@ -174,6 +174,16 @@ const mockSavedSessions: SavedSession[] = [
     feedback:
       'I had very good retention but struggled with recall times. I have to practice fast recalling before my exam.',
   },
+  {
+    id: '6',
+    subjectId: '1',
+    topicId: '1',
+    date: '2022-04-23T12:00:00.000Z',
+    learningTechnique: 1,
+    retention: 1,
+    feedback:
+      'I had very good retention but struggled with recall times. I have to practice fast recalling before my exam.',
+  },
 ];
 
 export { mockSubjects, mockScheduledSessions, mockTopics, mockSavedSessions };

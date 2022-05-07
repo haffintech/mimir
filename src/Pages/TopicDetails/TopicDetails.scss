@@ -1,5 +1,42 @@
+@import '../../sass/shared.scss';
 .topic-details {
   padding: 15px 0;
+
+  &__stats-headline {
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  &__container {
+    @include media-query('md') {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      grid-template-rows: min-content;
+      column-gap: 30px;
+    }
+    @include media-query('lg') {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  &__past-sessions-headline {
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: 400;
+  }
+
+  &__past-sessions-container {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    grid-row-end: 100;
+
+    @include media-query('lg') {
+      grid-column-end: 4;
+    }
+  }
 
   &__headline {
     margin-bottom: 30px;
@@ -7,5 +44,16 @@
 
   &__add-session-button {
     margin: 20px 0;
+  }
+
+  &__add-session-headline {
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: 400;
+  }
+
+  &__add-session-container {
+    margin-top: 30px;
+    grid-row-start: 2;
   }
 }

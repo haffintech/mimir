@@ -24,7 +24,6 @@ const PastSessions = ({ content, sessions }: Props) => {
   });
   return (
     <div className='past-sessions'>
-      <h4 className='past-sessions__headline'>{content.headline}</h4>
       <div className='past-sessions__sessions-container'>{sessionCards}</div>
     </div>
   );
