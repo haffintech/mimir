@@ -2,6 +2,7 @@ import * as React from 'react';
 import Button from 'react-bootstrap/Button';
 import classNames from 'classnames';
 
+import { learningTechniques } from '../../../utils/misc/learningTechniques';
 import { ScheduledSession } from '../../../Types/Session';
 import { Topic } from '../../../Types/Topic';
 
@@ -43,13 +44,18 @@ const TopicCard = ({ content, topic, nextSession, onTopicClick }: Props) => {
   const onAddSession = () => {
     console.log('add session');
   };
+
+  const learningTechnique = learningTechniques.filter(
+    (technique) => technique.id === nextSession.learningTechnique
+  );
+
   return (
     <div className='topic'>
       <div className='topic__container' onClick={onClick}>
         <h4 className='topic__name'>{topic.name}</h4>
         <p className='topic__total-revisions'>{content.totalRevisionsLabel}</p>
         <p className='topic__technique-label'>{content.techniqueLabel}</p>
-        <p className='topic__next-technique'>{nextSession.learningTechnique}</p>
+        <p className='topic__next-technique'>{learningTechnique[0].name}</p>
         <p className={dueDateClassName}>{`${content.dueLabel} ${formattedSessionDate}`}</p>
       </div>
       <div className='topic__button-container'>
