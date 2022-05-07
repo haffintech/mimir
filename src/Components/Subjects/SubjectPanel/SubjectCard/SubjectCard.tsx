@@ -9,21 +9,18 @@ import './SubjectCard.scss';
 type Props = {
   subject: Subject;
   side: string;
-  isAddSubject?: boolean;
-  onClick: (id: string) => void;
+  onClick: (subject: Subject) => void;
 };
 
-const SubjectCard = (props: Props) => {
-  const onClick = () => {
-    props.onClick(props.subject.id);
+const SubjectCard = ({ subject, side, onClick }: Props) => {
+  const onSubjectClick = () => {
+    onClick(subject);
   };
 
   return (
-    <div className={`subject-card ${props.side}`} onClick={onClick}>
-      <div className='subject-card__color-box' style={{ backgroundColor: props.subject.colorCode }}>
-        {props.isAddSubject && <IconPlus className='subject-card__plus-icon' />}
-      </div>
-      <h4 className='subject-card__name'>{props.subject.name}</h4>
+    <div className={`subject-card ${side}`} onClick={onSubjectClick}>
+      <div className='subject-card__color-box' style={{ backgroundColor: subject.colorCode }}></div>
+      <h4 className='subject-card__name'>{subject.name}</h4>
     </div>
   );
 };
