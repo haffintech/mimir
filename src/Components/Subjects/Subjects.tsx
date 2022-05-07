@@ -11,6 +11,7 @@ import { Subject } from '../../Types/Subject';
 import useViewportResize from '../../utils/hooks/useViewportResize';
 import { breakpoints } from '../../utils/misc/breakpoints';
 import './Subjects.scss';
+import { VoidExpression } from 'typescript';
 
 type Props = {
   content: {
@@ -25,16 +26,15 @@ type Props = {
     };
   };
   subjects: Subject[];
+  onSubjectClick: (subject: Subject) => void;
 };
 
-const Subjects = ({ content, subjects }: Props) => {
+const Subjects = ({ content, subjects, onSubjectClick }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const addSubjectButtonRef = useRef(null);
 
   const { width } = useViewportResize();
   const isMobile = width < breakpoints.md;
-
-  const onSubjectClick = (id: string) => {};
 
   const onAddSubjectCancel = () => {
     setIsModalOpen(false);

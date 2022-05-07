@@ -8,18 +8,18 @@ import './SubjectsPanel.scss';
 
 type Props = {
   subjects: Subject[];
-  onSubjectClick: (id: string) => void;
+  onSubjectClick: (subject: Subject) => void;
 };
 
-const SubjectsPanel = (props: Props) => {
-  const subjectCards = props.subjects.map((subject, idx) => {
+const SubjectsPanel = ({ subjects, onSubjectClick }: Props) => {
+  const subjectCards = subjects.map((subject, idx) => {
     const sideOfMobileGrid = idx % 2 === 0 ? 'left' : 'right';
     return (
       <SubjectCard
         key={subject.id}
         subject={subject}
         side={sideOfMobileGrid}
-        onClick={props.onSubjectClick}
+        onClick={onSubjectClick}
       />
     );
   });

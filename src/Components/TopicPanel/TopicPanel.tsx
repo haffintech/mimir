@@ -5,9 +5,10 @@ import TopicCard from './TopicCard/TopicCard';
 import { useSelector } from 'react-redux';
 
 import { RootState } from '../../reduxSetup/store';
-import './TopicPanel.scss';
 import { ScheduledSession } from '../../Types/Session';
 import { Topic } from '../../Types/Topic';
+
+import './TopicPanel.scss';
 
 type Props = {
   subjectId: string;
@@ -20,6 +21,7 @@ type Props = {
       addSessionButton: string;
     };
   };
+  onTopicClick: (topic: Topic) => void;
 };
 
 type TopicSessionMapping = {
@@ -27,7 +29,7 @@ type TopicSessionMapping = {
   nextSession: ScheduledSession;
 };
 
-const TopicPanel = ({ subjectId, content }: Props) => {
+const TopicPanel = ({ subjectId, content, onTopicClick }: Props) => {
   const topics = useSelector((state: RootState) => state.topics.topics);
   const scheduledSessions = useSelector(
     (state: RootState) => state.scheduledSessions.scheduledSessions
@@ -46,6 +48,7 @@ const TopicPanel = ({ subjectId, content }: Props) => {
         topic={mapping.topic}
         nextSession={mapping.nextSession}
         content={content.topicCards}
+        onTopicClick={onTopicClick}
       />
     );
   });

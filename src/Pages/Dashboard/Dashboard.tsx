@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Subjects from '../../Components/Subjects/Subjects';
 import UpcomingSessions from '../../Components/UpcomingSessions/UpcomingSessions';
@@ -9,6 +10,7 @@ import { useAppSelector } from '../../reduxSetup/hooks';
 import { RootState } from '../../reduxSetup/store';
 
 import './Dashboard.scss';
+import { Subject } from '../../Types/Subject';
 
 type Props = {
   content: {
@@ -39,6 +41,12 @@ type Props = {
 };
 
 const Dashboard = ({ content }: Props) => {
+  const navigate = useNavigate();
+
+  const onSubjectClick = (subject: Subject) => {
+    navigate(`/topics/${subject.id}`);
+  };
+
   const { width } = useViewportResize();
   const isMobile = width < breakpoints.md;
   const subjects = useAppSelector((state: RootState) => state.subjects.subjects);
@@ -49,14 +57,14 @@ const Dashboard = ({ content }: Props) => {
   if (isMobile) {
     return (
       <div className='dashboard'>
-        <Subjects content={content.subjects} subjects={subjects} />
+        <Subjects content={content.subjects} subjects={subjects} onSubjectClick={onSubjectClick} />
       </div>
     );
   }
   return (
     <div className='dashboard'>
       <div className='dashboard__subjects-container'>
-        <Subjects content={content.subjects} subjects={subjects} />
+        <Subjects content={content.subjects} subjects={subjects} onSubjectClick={onSubjectClick} />
       </div>
 
       <UpcomingSessions
