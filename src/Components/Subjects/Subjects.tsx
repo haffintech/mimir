@@ -7,9 +7,14 @@ import Popover from 'react-bootstrap/Popover';
 import SubjectsPanel from './SubjectPanel/SubjectsPanel';
 import AddSubject from './AddSubject/AddSubject';
 
-import { Subject } from '../../Types/Subject';
 import useViewportResize from '../../utils/hooks/useViewportResize';
+import { useAppDispatch } from '../../reduxSetup/hooks';
+import { addSubject } from '../../stateSlices/subjects/subjectsSlice';
+
+import { getUniqueId } from '../../utils/misc/idGenerator';
 import { breakpoints } from '../../utils/misc/breakpoints';
+import { Subject } from '../../Types/Subject';
+
 import './Subjects.scss';
 
 type Props = {
@@ -36,6 +41,8 @@ const Subjects = ({ content, subjects, onSubjectClick }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const addSubjectButtonRef = useRef(null);
 
+  const dispatch = useAppDispatch();
+
   const { width } = useViewportResize();
   const isMobile = width < breakpoints.md;
 
@@ -43,7 +50,14 @@ const Subjects = ({ content, subjects, onSubjectClick }: Props) => {
     setIsModalOpen(false);
   };
 
-  const onSaveSubject = () => {
+  const onSaveSubject = (subject: Subject) => {
+    const id = getUniqueId();
+    console.log(id);
+    const newSubject = {
+      ...subject,
+      id: id,
+    };
+    dispatch(addSubject(newSubject));
     setIsModalOpen(false);
   };
 
