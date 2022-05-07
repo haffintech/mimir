@@ -9,6 +9,7 @@ import Welcome from './Pages/Welcome/Welcome';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import UpcomingSessions from './Components/UpcomingSessions/UpcomingSessions';
 import TopicOverview from './Pages/TopicOverview/TopicOverview';
+import TopicDetails from './Pages/TopicDetails/TopicDetails';
 
 import { useAppSelector } from './reduxSetup/hooks';
 import { RootState } from './reduxSetup/store';
@@ -72,9 +73,11 @@ function App() {
                 />
               }
             />
-            <Route path='/topics/:subjectId' element={<TopicOverview content={content.topics} />}>
-              <Route path='/topics/:subjectId/:topicId' element={<></>} />
-            </Route>
+            <Route path='/topics/:subjectId' element={<TopicOverview content={content.topics} />} />
+            <Route
+              path='/topics/:subjectId/:topicId'
+              element={<TopicDetails content={content.savedSessions} />}
+            />
             <Route path='/about' element={<></>} />
             <Route path='/contact' element={<></>} />
           </Routes>

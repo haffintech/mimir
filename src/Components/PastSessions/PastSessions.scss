@@ -1,0 +1,12 @@
+@import '../../sass/shared.scss';
+
+.past-sessions {
+  margin-top: 20px;
+
+  &__headline {
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: 400;
+    margin-bottom: 15px;
+  }
+}
