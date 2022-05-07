@@ -11,7 +11,6 @@ import { Subject } from '../../Types/Subject';
 import useViewportResize from '../../utils/hooks/useViewportResize';
 import { breakpoints } from '../../utils/misc/breakpoints';
 import './Subjects.scss';
-import { VoidExpression } from 'typescript';
 
 type Props = {
   content: {
@@ -23,6 +22,10 @@ type Props = {
       cancel: string;
       saveSubject: string;
       colorCodes: string[];
+    };
+    placeholder: {
+      text: string;
+      ctaText: string;
     };
   };
   subjects: Subject[];
@@ -61,7 +64,12 @@ const Subjects = ({ content, subjects, onSubjectClick }: Props) => {
             {content.addSubject}
           </Button>
         </div>
-        <SubjectsPanel subjects={subjects} onSubjectClick={onSubjectClick} />
+        <SubjectsPanel
+          subjects={subjects}
+          onSubjectClick={onSubjectClick}
+          placeholder={content.placeholder}
+          onPlaceholderClick={onAddSubject}
+        />
         <Modal centered show={isModalOpen} onHide={onAddSubjectCancel}>
           <AddSubject
             content={{ ...content.addSubjects, headline: content.addSubject }}
@@ -95,7 +103,12 @@ const Subjects = ({ content, subjects, onSubjectClick }: Props) => {
             </Button>
           </OverlayTrigger>
         </div>
-        <SubjectsPanel subjects={subjects} onSubjectClick={onSubjectClick} />
+        <SubjectsPanel
+          subjects={subjects}
+          onSubjectClick={onSubjectClick}
+          placeholder={content.placeholder}
+          onPlaceholderClick={onAddSubject}
+        />
       </div>
     );
   }

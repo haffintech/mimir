@@ -24,6 +24,10 @@ type Props = {
         saveSubject: string;
         colorCodes: string[];
       };
+      placeholder: {
+        text: string;
+        ctaText: string;
+      };
     };
     upcomingSessions: {
       headline: string;

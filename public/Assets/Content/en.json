@@ -15,6 +15,10 @@
     },
     "dashboard": {
       "subjects": {
+        "placeholder": {
+          "text": "You don't have any subjects.",
+          "ctaText": "Start by adding one"
+        },
         "headline": "My subjects",
         "addSubject": "Add a subject",
         "addSubjects": {

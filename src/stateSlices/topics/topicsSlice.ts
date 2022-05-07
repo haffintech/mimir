@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { mockTopics } from '../../mockdata';
 import { Topic } from '../../Types/Topic';
 
 interface TopicsState {
@@ -7,7 +6,7 @@ interface TopicsState {
 }
 
 const initialState: TopicsState = {
-  topics: mockTopics,
+  topics: [],
 };
 
 /* reducers */
