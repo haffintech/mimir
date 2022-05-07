@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { mockSubjects } from '../../mockdata';
+
 import { Subject } from '../../Types/Subject';
 
 interface SubjectsState {
@@ -7,7 +7,7 @@ interface SubjectsState {
 }
 
 const initialState: SubjectsState = {
-  subjects: mockSubjects,
+  subjects: [],
 };
 
 /* reducers */

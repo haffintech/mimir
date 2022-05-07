@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 
 import ColorPicker from './ColorPicker/ColorPicker';
 
+import { Subject } from '../../../Types/Subject';
+
 import './AddSubject.scss';
 
 type Props = {
@@ -16,7 +18,7 @@ type Props = {
     colorCodes: string[];
   };
   onCancel: () => void;
-  onSaveSubject: () => void;
+  onSaveSubject: (subject: Subject) => void;
 };
 
 const AddSubject = ({ content, onCancel, onSaveSubject }: Props) => {
@@ -31,6 +33,18 @@ const AddSubject = ({ content, onCancel, onSaveSubject }: Props) => {
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
+  };
+
+  const onSaveClick = () => {
+    if (!isFormFilled) {
+      console.log('no no bad boy');
+      return;
+    }
+    onSaveSubject({
+      id: 'temporary',
+      name: name,
+      colorCode: color,
+    });
   };
 
   return (
@@ -48,7 +62,7 @@ const AddSubject = ({ content, onCancel, onSaveSubject }: Props) => {
         <Button variant='outline-secondary' onClick={onCancel}>
           {content.cancel}
         </Button>
-        <Button disabled={!isFormFilled} onClick={onSaveSubject}>
+        <Button disabled={!isFormFilled} onClick={onSaveClick}>
           {content.saveSubject}
         </Button>
       </div>

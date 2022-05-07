@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { mockSavedSessions } from '../../mockdata';
 import { SavedSession } from '../../Types/Session';
 
 interface savedSessionsState {
@@ -7,7 +6,7 @@ interface savedSessionsState {
 }
 
 const initialState: savedSessionsState = {
-  savedSessions: mockSavedSessions,
+  savedSessions: [],
 };
 
 /* reducers */
