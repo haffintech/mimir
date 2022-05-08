@@ -1,16 +1,26 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
+
 import { useParams, useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../reduxSetup/hooks';
 
 import TopicPanel from '../../Components/TopicPanel/TopicPanel';
+import AddTopic from '../../Components/AddTopic/AddTopic';
 
 import { useAppSelector } from '../../reduxSetup/hooks';
+import { addTopic } from '../../stateSlices/topics/topicsSlice';
+import { addScheduledSession } from '../../stateSlices/scheduledSessions/scheduledSessionsSlice';
 
 import { Subject } from '../../Types/Subject';
 import { Topic } from '../../Types/Topic';
 import { RootState } from '../../reduxSetup/store';
 
 import './TopicOverview.scss';
+import { getUniqueId } from '../../utils/misc/idGenerator';
+import { getPrestudySession } from '../../utils/misc/sessionScheduling';
 
 type Props = {
   content: {
@@ -22,11 +32,22 @@ type Props = {
       rescheduleButton: string;
       addSessionButton: string;
     };
+    placeholder: string;
+    addTopic: {
+      headline: string;
+      nameLabel: string;
+      cancelButton: string;
+      saveButton: string;
+    };
   };
 };
 
 const TopicOverview = ({ content }: Props) => {
   const subjects = useAppSelector((state: RootState) => state.subjects.subjects);
+  const dispatch = useAppDispatch();
+
+  const [isPopperOpen, setIsPopperOpen] = useState<boolean>(false);
+
   const navigate = useNavigate();
   const { subjectId } = useParams();
 
@@ -37,19 +58,48 @@ const TopicOverview = ({ content }: Props) => {
 
   const currentSubject = getCurrentSubject(subjects, subjectId);
 
-  const onTopicClick = (topic: Topic) => {
-    console.log('here');
+  if (!currentSubject) return <p>this subject is not available</p>;
 
+  const onTopicClick = (topic: Topic) => {
     navigate(`/topics/${subjectId}/${topic.id}`);
+  };
+
+  const togglePopper = () => {
+    setIsPopperOpen(!isPopperOpen);
+  };
+
+  const onSaveTopic = (name: string) => {
+    const topic = {
+      id: getUniqueId(),
+      subjectId: currentSubject.id,
+      name: name,
+    };
+    const firstSession = getPrestudySession(topic);
+    dispatch(addTopic(topic));
+    dispatch(addScheduledSession(firstSession));
+    togglePopper();
   };
 
   return (
     <div className='topic-overview'>
       <h2 className='topic-overview__headline'>{currentSubject.name}</h2>
-      <Button className='topic-overview__add-button'>{content.addTopicButton}</Button>
+      <OverlayTrigger
+        trigger='click'
+        placement='bottom'
+        show={isPopperOpen}
+        overlay={
+          <Popover className='subjects__popover'>
+            <AddTopic content={content.addTopic} onCancel={togglePopper} onSave={onSaveTopic} />
+          </Popover>
+        }
+      >
+        <Button className='topic-overview__add-button' onClick={togglePopper}>
+          {content.addTopicButton}
+        </Button>
+      </OverlayTrigger>
       <TopicPanel
         subjectId={subjectId}
-        content={{ topicCards: content.topicCards }}
+        content={{ topicCards: content.topicCards, placeholder: content.placeholder }}
         onTopicClick={onTopicClick}
       />
     </div>

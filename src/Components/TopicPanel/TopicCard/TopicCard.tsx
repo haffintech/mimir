@@ -3,8 +3,9 @@ import Button from 'react-bootstrap/Button';
 import classNames from 'classnames';
 
 import { learningTechniques } from '../../../utils/misc/learningTechniques';
-import { ScheduledSession } from '../../../Types/Session';
 import { Topic } from '../../../Types/Topic';
+
+import { TopicCardData } from '../TopicPanel';
 
 import './TopicCard.scss';
 
@@ -16,12 +17,12 @@ type Props = {
     rescheduleButton: string;
     addSessionButton: string;
   };
-  topic: Topic;
-  nextSession: ScheduledSession;
+  data: TopicCardData;
   onTopicClick: (topic: Topic) => void;
 };
 
-const TopicCard = ({ content, topic, nextSession, onTopicClick }: Props) => {
+const TopicCard = ({ content, onTopicClick, data }: Props) => {
+  const { topic, nextSession, revisionCount } = data;
   const today = new Date().getTime();
   const sessionDate = new Date(nextSession.date).getTime();
   const isSessionDue = today > sessionDate;
@@ -53,7 +54,7 @@ const TopicCard = ({ content, topic, nextSession, onTopicClick }: Props) => {
     <div className='topic'>
       <div className='topic__container' onClick={onClick}>
         <h4 className='topic__name'>{topic.name}</h4>
-        <p className='topic__total-revisions'>{content.totalRevisionsLabel}</p>
+        <p className='topic__total-revisions'>{`${content.totalRevisionsLabel} ${revisionCount}`}</p>
         <p className='topic__technique-label'>{content.techniqueLabel}</p>
         <p className='topic__next-technique'>{learningTechnique[0].name}</p>
         <p className={dueDateClassName}>{`${content.dueLabel} ${formattedSessionDate}`}</p>

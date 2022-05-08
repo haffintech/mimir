@@ -52,7 +52,6 @@ const Subjects = ({ content, subjects, onSubjectClick }: Props) => {
 
   const onSaveSubject = (subject: Subject) => {
     const id = getUniqueId();
-    console.log(id);
     const newSubject = {
       ...subject,
       id: id,

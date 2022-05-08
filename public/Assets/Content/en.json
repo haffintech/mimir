@@ -50,6 +50,13 @@
     },
     "topics": {
       "addTopicButton": "Add a topic",
+      "placeholder": "You don't have any topics for this subject yet.",
+      "addTopic": {
+        "headline": "Add topic",
+        "nameLabel": "Name",
+        "cancelButton": "Cancel",
+        "saveButton": "Save topic"
+      },
       "topicCards": {
         "totalRevisionsLabel": "Total revisions:",
         "techniqueLabel": "Recommended learning technique:",
