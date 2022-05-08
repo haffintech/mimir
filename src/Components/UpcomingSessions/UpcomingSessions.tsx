@@ -27,11 +27,15 @@ type Props = {
 
 const UpcomingSessions = ({ content, upcomingSessions }: Props) => {
   const subjects = useAppSelector((state: RootState) => state.subjects.subjects);
+  const topics = useAppSelector((state: RootState) => state.topics.topics);
 
   const sessionCards = upcomingSessions.map((session) => {
     const sessionSubject = subjects.filter((subject) => subject.id === session.subjectId);
     const subjectName = sessionSubject[0].name;
-    const topicName = 'topic';
+
+    const sessionTopic = topics.filter((topic) => topic.id === session.topicId);
+    const topicName = sessionTopic[0].name;
+
     return (
       <SessionCard
         key={session.id}

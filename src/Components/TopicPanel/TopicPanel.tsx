@@ -5,7 +5,7 @@ import TopicCard from './TopicCard/TopicCard';
 import { useSelector } from 'react-redux';
 
 import { RootState } from '../../reduxSetup/store';
-import { ScheduledSession } from '../../Types/Session';
+import { SavedSession, ScheduledSession } from '../../Types/Session';
 import { Topic } from '../../Types/Topic';
 
 import './TopicPanel.scss';
@@ -13,6 +13,7 @@ import './TopicPanel.scss';
 type Props = {
   subjectId: string;
   content: {
+    placeholder: string;
     topicCards: {
       totalRevisionsLabel: string;
       techniqueLabel: string;
@@ -24,9 +25,10 @@ type Props = {
   onTopicClick: (topic: Topic) => void;
 };
 
-type TopicSessionMapping = {
+export type TopicCardData = {
   topic: Topic;
   nextSession: ScheduledSession;
+  revisionCount: number;
 };
 
 const TopicPanel = ({ subjectId, content, onTopicClick }: Props) => {
@@ -34,43 +36,59 @@ const TopicPanel = ({ subjectId, content, onTopicClick }: Props) => {
   const scheduledSessions = useSelector(
     (state: RootState) => state.scheduledSessions.scheduledSessions
   );
+  const savedSessions = useSelector((state: RootState) => state.savedSessions.savedSessions);
 
   const currentTopics = topics.filter((topic) => topic.subjectId === subjectId);
 
-  const topicSessionMappings: TopicSessionMapping[] = getTopicSessionMappings(
-    currentTopics,
-    scheduledSessions
-  );
-  const topicCards = topicSessionMappings.map((mapping) => {
+  const topicCardData: TopicCardData[] = getTopicCardData({
+    topics: currentTopics,
+    scheduledSessions,
+    savedSessions,
+  });
+  const topicCards = topicCardData.map((data) => {
     return (
       <TopicCard
-        key={mapping.topic.id}
-        topic={mapping.topic}
-        nextSession={mapping.nextSession}
+        key={data.topic.id}
+        data={data}
         content={content.topicCards}
         onTopicClick={onTopicClick}
       />
     );
   });
 
+  if (topicCards.length < 1) {
+    return <div className='topic-panel'>{content.placeholder}</div>;
+  }
+
   return <div className='topic-panel'>{topicCards}</div>;
 };
 
 export default TopicPanel;
 
-function getTopicSessionMappings(
-  topics: Topic[],
-  sessions: ScheduledSession[]
-): TopicSessionMapping[] {
-  const mappings = topics.map((topic) => {
-    const mappedSessions = sessions.filter((session) => session.topicId === topic.id);
-    const nextSession = getNextSession(mappedSessions);
+type Params = {
+  topics: Topic[];
+  scheduledSessions: ScheduledSession[];
+  savedSessions: SavedSession[];
+};
+
+function getTopicCardData({ topics, scheduledSessions, savedSessions }: Params): TopicCardData[] {
+  const data = topics.map((topic) => {
+    const topicScheduledSessions = scheduledSessions.filter(
+      (session) => session.topicId === topic.id
+    );
+    const nextSession = getNextSession(topicScheduledSessions);
+
+    const topicSavedSessions = savedSessions.filter((session) => session.topicId === topic.id);
+    const revisionCount = topicSavedSessions.length;
+
     return {
       topic,
       nextSession,
+      revisionCount,
     };
   });
-  return mappings;
+
+  return data;
 }
 
 function getNextSession(sessions: ScheduledSession[]) {

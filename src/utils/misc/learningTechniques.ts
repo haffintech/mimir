@@ -6,42 +6,42 @@ export type LearningTechnique = {
 export const learningTechniques = [
   {
     id: 1,
-    name: 'Make a mindmap',
-  },
-  {
-    id: 2,
-    name: 'Summarize notes',
-  },
-  {
-    id: 3,
-    name: 'Create your own exam questions',
-  },
-  {
-    id: 4,
-    name: 'Answer your own exam questions',
-  },
-  {
-    id: 5,
-    name: 'Teach the topic',
-  },
-  {
-    id: 6,
-    name: 'Compare to related topics',
-  },
-  {
-    id: 7,
-    name: 'Solve practice papers/problems',
-  },
-  {
-    id: 8,
-    name: 'Put into real-world context',
-  },
-  {
-    id: 9,
     name: 'pre-study',
   },
   {
-    id: 10,
+    id: 2,
     name: 'in-class',
+  },
+  {
+    id: 3,
+    name: 'Summarize notes from class',
+  },
+  {
+    id: 4,
+    name: 'Create your own exam questions',
+  },
+  {
+    id: 5,
+    name: 'Answer your own exam questions',
+  },
+  {
+    id: 6,
+    name: 'Teach the topic',
+  },
+  {
+    id: 7,
+    name: 'Compare to related topics',
+  },
+  {
+    id: 8,
+    name: 'Solve practice papers/problems',
+  },
+  {
+    id: 9,
+    name: 'Put into real-world context',
+  },
+  {
+    id: 10,
+    name: 'Make a mindmap from memory',
   },
 ];
