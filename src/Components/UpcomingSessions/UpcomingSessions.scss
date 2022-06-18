@@ -12,6 +12,14 @@
       padding-bottom: 15px;
     }
   }
+
+  &__placeholder {
+    background-color: #fff;
+    @include media-query('md') {
+      background-color: $siteBackground;
+    }
+  }
+
   &__card-container {
     display: flex;
     flex-direction: column;
