@@ -67,7 +67,6 @@
       }
     },
     "savedSessions": {
-      "placeholder": "You haven't tracked a learning session for this subject.",
       "topicStats": {
         "headline": "Learning stats",
         "revisionsLabel": "Revisions:",
@@ -78,6 +77,7 @@
       "addSessionButton": "Add learning session",
       "pastRevisions": {
         "headline": "Past revisions",
+        "placeholder": "You haven't tracked a learning session for this topic.",
         "cards": {
           "datePrefix": "At",
           "retentionSuffix": "retention",
