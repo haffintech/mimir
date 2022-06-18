@@ -30,6 +30,7 @@ type Props = {
       };
     };
     upcomingSessions: {
+      placeholder: string;
       headline: string;
       sessionCardContent: {
         reschedule: string;

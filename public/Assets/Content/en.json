@@ -41,6 +41,7 @@
       },
       "upcomingSessions": {
         "headline": "Upcoming sessions",
+        "placeholder": "You currently don't have any scheduled sessions.",
         "sessionCardContent": {
           "recommendedTechnique": "Recommended learning technique:",
           "reschedule": "Reschedule",
@@ -76,6 +77,7 @@
       "addSessionButton": "Add learning session",
       "pastRevisions": {
         "headline": "Past revisions",
+        "placeholder": "You haven't tracked a learning session for this topic.",
         "cards": {
           "datePrefix": "At",
           "retentionSuffix": "retention",

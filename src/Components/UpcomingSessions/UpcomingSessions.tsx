@@ -12,6 +12,7 @@ import './UpcomingSessions.scss';
 type Props = {
   content: {
     headline: string;
+    placeholder: string;
     learningTechniques: {
       id: string;
       name: string;
@@ -28,6 +29,7 @@ type Props = {
 const UpcomingSessions = ({ content, upcomingSessions }: Props) => {
   const subjects = useAppSelector((state: RootState) => state.subjects.subjects);
   const topics = useAppSelector((state: RootState) => state.topics.topics);
+  const isPlaceholderVisible = upcomingSessions.length < 1;
 
   const sessionCards = upcomingSessions.map((session) => {
     const sessionSubject = subjects.filter((subject) => subject.id === session.subjectId);
@@ -49,7 +51,12 @@ const UpcomingSessions = ({ content, upcomingSessions }: Props) => {
   return (
     <div className='upcoming-sessions'>
       <h2 className='upcoming-sessions__headline'>{content.headline}</h2>
-      <div className='upcoming-sessions__card-container'>{sessionCards}</div>
+      {isPlaceholderVisible && (
+        <p className='upcoming-sessions__placeholder'>{content.placeholder}</p>
+      )}
+      {!isPlaceholderVisible && (
+        <div className='upcoming-sessions__card-container'>{sessionCards}</div>
+      )}
     </div>
   );
 };

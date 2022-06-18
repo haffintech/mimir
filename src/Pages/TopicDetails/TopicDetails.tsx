@@ -28,6 +28,7 @@ type Props = {
     addSessionButton: string;
     pastRevisions: {
       headline: string;
+      placeholder: string;
       cards: {
         datePrefix: string;
         retentionSuffix: string;

@@ -3,16 +3,22 @@
 .past-sessions {
   margin-top: 20px;
 
-  @include media-query('md') {
-    background-color: #fff;
-    padding: 20px;
+  &__placeholder {
+    @include media-query('md') {
+      background-color: $siteBackground;
+    }
   }
-
-  @include media-query('lg') {
-    padding: 30px;
-  }
-
   &__sessions-container {
+    background-color: #fff;
+
+    @include media-query('md') {
+      padding: 20px;
+    }
+
+    @include media-query('lg') {
+      padding: 30px;
+    }
+
     @include media-query('lg') {
       display: grid;
       grid-template-columns: 1fr 1fr;
