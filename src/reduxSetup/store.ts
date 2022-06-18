@@ -1,4 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { getSavedAppState } from './../utils/storageHelper';
+import { storageMiddleware } from './storageMiddleware';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import subjectsSlice from '../stateSlices/subjects/subjectsSlice';
 import scheduledSessionsSlice from '../stateSlices/scheduledSessions/scheduledSessionsSlice';
 import topicsSlice from '../stateSlices/topics/topicsSlice';
@@ -11,6 +13,8 @@ export const store = configureStore({
     topics: topicsSlice,
     savedSessions: savedSessionSlice,
   },
+  preloadedState: getSavedAppState(),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(storageMiddleware),
 });
 
 export type AppDispatch = typeof store.dispatch;
