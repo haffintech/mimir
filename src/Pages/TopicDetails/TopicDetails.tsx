@@ -9,12 +9,17 @@ import PastSessions from '../../Components/PastSessions/PastSessions';
 import AddSession from '../../Components/AddSession/AddSession';
 
 import { useAppSelector } from '../../reduxSetup/hooks';
+import { useAppDispatch } from '../../reduxSetup/hooks';
+import { addSavedSession } from '../../stateSlices/savedSessions/savedSessionSlice';
+
 import useViewportResize from '../../utils/hooks/useViewportResize';
+import { getUniqueId } from '../../utils/misc/idGenerator';
 
 import { breakpoints } from '../../utils/misc/breakpoints';
 import { RootState } from '../../reduxSetup/store';
 
 import './TopicDetails.scss';
+import { LearningTechnique } from '../../utils/misc/learningTechniques';
 
 type Props = {
   content: {
@@ -40,6 +45,7 @@ type Props = {
       dateLabel: string;
       feedbackLabel: string;
       techniqueLabel: string;
+      dropdownPlaceholder: string;
       retentionLabel: string;
       cancelButton: string;
       saveButton: string;
@@ -52,6 +58,8 @@ type Props = {
 };
 
 const TopicDetails = ({ content }: Props) => {
+  const dispatch = useAppDispatch();
+
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const { width } = useViewportResize();
@@ -82,6 +90,26 @@ const TopicDetails = ({ content }: Props) => {
     setIsModalOpen(!isModalOpen);
   };
 
+  const onAddSession = (
+    sessionDate: Date,
+    feedback: string,
+    learningTechnique: LearningTechnique,
+    retention: number
+  ) => {
+    const date = sessionDate.toISOString();
+    const session = {
+      id: getUniqueId(),
+      subjectId: currentTopic.subjectId,
+      topicId: currentTopic.id,
+      date,
+      feedback,
+      learningTechnique: learningTechnique.id,
+      retention,
+    };
+
+    dispatch(addSavedSession(session));
+  };
+
   return (
     <div className='topic-details'>
       <h2 className='topic-details__headline'>{currentTopic.name}</h2>
@@ -104,12 +132,20 @@ const TopicDetails = ({ content }: Props) => {
         </div>
         {isMobile && (
           <Modal centered show={isModalOpen} onHide={toggleModal}>
-            <AddSession content={content.addSession} onClose={toggleModal} />
+            <AddSession
+              content={content.addSession}
+              onClose={toggleModal}
+              onAddSession={onAddSession}
+            />
           </Modal>
         )}
         <div className='topic-details__add-session-container'>
           <h4 className='topic-details__add-session-headline'>{content.addSession.headline}</h4>
-          <AddSession content={content.addSession} onClose={toggleModal} />
+          <AddSession
+            content={content.addSession}
+            onClose={toggleModal}
+            onAddSession={onAddSession}
+          />
         </div>
       </div>
     </div>

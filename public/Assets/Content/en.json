@@ -89,6 +89,7 @@
         "dateLabel": "Date",
         "feedbackLabel": "Leave yourself some feedback",
         "techniqueLabel": "Learning technique",
+        "dropdownPlaceholder": "Select learning technique",
         "retentionLabel": "Rate your retention",
         "cancelButton": "Cancel",
         "saveButton": "Save session",
