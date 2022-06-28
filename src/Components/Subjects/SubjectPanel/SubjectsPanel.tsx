@@ -15,9 +15,16 @@ type Props = {
   };
   onPlaceholderClick: () => void;
   onSubjectClick: (subject: Subject) => void;
+  onDeleteSubject: (subject: Subject) => void;
 };
 
-const SubjectsPanel = ({ subjects, onSubjectClick, placeholder, onPlaceholderClick }: Props) => {
+const SubjectsPanel = ({
+  subjects,
+  onSubjectClick,
+  placeholder,
+  onPlaceholderClick,
+  onDeleteSubject,
+}: Props) => {
   if (!subjects[0]) {
     return (
       <div className='subjects-panel'>
@@ -39,6 +46,7 @@ const SubjectsPanel = ({ subjects, onSubjectClick, placeholder, onPlaceholderCli
         subject={subject}
         side={sideOfMobileGrid}
         onClick={onSubjectClick}
+        onDeleteSubject={onDeleteSubject}
       />
     );
   });

@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ScheduledSession } from '../../Types/Session';
+import { deleteSubject } from '../subjects/subjectsSlice';
 
 interface scheduledSessionsState {
   scheduledSessions: ScheduledSession[];
@@ -21,8 +22,13 @@ const deleteScheduledSessionReducer = (
   state: scheduledSessionsState,
   action: PayloadAction<ScheduledSession>
 ) => {
-  const index = state.scheduledSessions.indexOf(action.payload);
-  if (index > -1) state.scheduledSessions.splice(index, 1);
+  const sessionToDelete = state.scheduledSessions.filter(
+    (session) => session.id === action.payload.id
+  )[0];
+  if (sessionToDelete) {
+    const index = state.scheduledSessions.indexOf(sessionToDelete);
+    state.scheduledSessions.splice(index, 1);
+  }
 };
 
 const scheduledSessionsSlice = createSlice({
@@ -31,6 +37,18 @@ const scheduledSessionsSlice = createSlice({
   reducers: {
     addScheduledSession: addScheduledSessionReducer,
     deleteScheduledSession: deleteScheduledSessionReducer,
+  },
+  extraReducers: (builder) => {
+    builder.addCase(deleteSubject, (state, action) => {
+      const sessionsToDelete = state.scheduledSessions.filter(
+        (session) => session.subjectId === action.payload.id
+      );
+      sessionsToDelete.forEach((session) => {
+        const index = state.scheduledSessions.indexOf(session);
+        if (index < 0) console.log('scheduled session to delete not found');
+        else state.scheduledSessions.splice(index, 1);
+      });
+    });
   },
 });
 

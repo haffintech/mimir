@@ -16,8 +16,11 @@ const addSubjectReducer = (state: SubjectsState, action: PayloadAction<Subject>)
 };
 
 const deleteSubjectReducer = (state: SubjectsState, action: PayloadAction<Subject>) => {
-  const index = state.subjects.indexOf(action.payload);
-  if (index > -1) state.subjects.splice(index, 1);
+  const subjectToDelete = state.subjects.filter((subject) => subject.id === action.payload.id)[0];
+  if (subjectToDelete) {
+    const index = state.subjects.indexOf(subjectToDelete);
+    state.subjects.splice(index, 1);
+  }
 };
 
 const subjectsSlice = createSlice({

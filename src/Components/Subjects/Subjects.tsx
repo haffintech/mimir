@@ -9,7 +9,7 @@ import AddSubject from './AddSubject/AddSubject';
 
 import useViewportResize from '../../utils/hooks/useViewportResize';
 import { useAppDispatch } from '../../reduxSetup/hooks';
-import { addSubject } from '../../stateSlices/subjects/subjectsSlice';
+import { addSubject, deleteSubject } from '../../stateSlices/subjects/subjectsSlice';
 
 import { getUniqueId } from '../../utils/misc/idGenerator';
 import { breakpoints } from '../../utils/misc/breakpoints';
@@ -60,6 +60,10 @@ const Subjects = ({ content, subjects, onSubjectClick }: Props) => {
     setIsModalOpen(false);
   };
 
+  const onDeleteSubject = (subject: Subject) => {
+    dispatch(deleteSubject(subject));
+  };
+
   const onAddSubject = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -82,6 +86,7 @@ const Subjects = ({ content, subjects, onSubjectClick }: Props) => {
           onSubjectClick={onSubjectClick}
           placeholder={content.placeholder}
           onPlaceholderClick={onAddSubject}
+          onDeleteSubject={onDeleteSubject}
         />
         <Modal centered show={isModalOpen} onHide={onAddSubjectCancel}>
           <AddSubject
@@ -121,6 +126,7 @@ const Subjects = ({ content, subjects, onSubjectClick }: Props) => {
           onSubjectClick={onSubjectClick}
           placeholder={content.placeholder}
           onPlaceholderClick={onAddSubject}
+          onDeleteSubject={onDeleteSubject}
         />
       </div>
     );

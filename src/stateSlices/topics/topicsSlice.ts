@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Topic } from '../../Types/Topic';
 
+import { deleteSubject } from '../subjects/subjectsSlice';
 interface TopicsState {
   topics: Topic[];
 }
@@ -15,8 +16,11 @@ const addTopicReducer = (state: TopicsState, action: PayloadAction<Topic>) => {
 };
 
 const deleteTopicReducer = (state: TopicsState, action: PayloadAction<Topic>) => {
-  const index = state.topics.indexOf(action.payload);
-  if (index > -1) state.topics.splice(index, 1);
+  const topicToDelete = state.topics.filter((topic) => topic.id === action.payload.id)[0];
+  if (topicToDelete) {
+    const index = state.topics.indexOf(topicToDelete);
+    state.topics.splice(index, 1);
+  }
 };
 
 const topicsSlice = createSlice({
@@ -25,6 +29,16 @@ const topicsSlice = createSlice({
   reducers: {
     addTopic: addTopicReducer,
     deleteTopic: deleteTopicReducer,
+  },
+  extraReducers: (builder) => {
+    builder.addCase(deleteSubject, (state, action) => {
+      const topicsToDelete = state.topics.filter((topic) => topic.subjectId === action.payload.id);
+      topicsToDelete.forEach((topic) => {
+        const index = state.topics.indexOf(topic);
+        if (index < 0) console.log('topic to delete not found');
+        else state.topics.splice(index, 1);
+      });
+    });
   },
 });
 
