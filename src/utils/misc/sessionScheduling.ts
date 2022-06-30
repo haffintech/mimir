@@ -57,9 +57,9 @@ const getNextStudyDate = (leitnerBox: number, topicSessions: SavedSession[]) => 
   if (!lastSession) {
     return addDaysToDate(today, 1).toISOString();
   }
-
+  const lastRevision = new Date(lastSession.date);
   const days = Math.round(Math.pow(leitnerBox, 2.25) + 3);
-  const newDate = addDaysToDate(today, days);
+  const newDate = addDaysToDate(lastRevision, days);
   return newDate.toISOString();
 };
 
