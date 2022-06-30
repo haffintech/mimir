@@ -9,9 +9,10 @@
     "welcome": {
       "headline": "Welcome to Mimir!",
       "teaser": "Mimir is a tool for scheduling and keeping records of your studying.",
-      "cta": "Get started today!",
-      "login": "Login",
-      "signup": "Sign up"
+      "cta": "Get started now!",
+      "sampleDataBtn": "Start with sample data",
+      "blankDashboardBtn": "Go to blank dashboard",
+      "dashboardLink": "/dashboard"
     },
     "dashboard": {
       "subjects": {
