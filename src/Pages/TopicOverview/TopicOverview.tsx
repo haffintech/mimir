@@ -20,7 +20,7 @@ import { RootState } from '../../reduxSetup/store';
 
 import './TopicOverview.scss';
 import { getUniqueId } from '../../utils/misc/idGenerator';
-import { getPrestudySession } from '../../utils/misc/sessionScheduling';
+import { getNextSession } from '../../utils/misc/sessionScheduling';
 
 type Props = {
   content: {
@@ -44,6 +44,7 @@ type Props = {
 
 const TopicOverview = ({ content }: Props) => {
   const subjects = useAppSelector((state: RootState) => state.subjects.subjects);
+  const savedSessions = useAppSelector((state: RootState) => state.savedSessions.savedSessions);
   const dispatch = useAppDispatch();
 
   const [isPopperOpen, setIsPopperOpen] = useState<boolean>(false);
@@ -73,9 +74,12 @@ const TopicOverview = ({ content }: Props) => {
       id: getUniqueId(),
       subjectId: currentSubject.id,
       name: name,
+      leitnerBox: 0,
     };
-    const firstSession = getPrestudySession(topic);
     dispatch(addTopic(topic));
+
+    const topicSessions = savedSessions.filter((session) => session.topicId === topic.id);
+    const firstSession = getNextSession(topic, topicSessions);
     dispatch(addScheduledSession(firstSession));
     togglePopper();
   };

@@ -97,19 +97,19 @@
         "retentionButtons": [
           {
             "value": "1",
-            "text": "25%"
+            "text": "<25%"
           },
           {
             "value": "2",
-            "text": "50%"
+            "text": "~50%"
           },
           {
             "value": "3",
-            "text": "75%"
+            "text": "~75%"
           },
           {
             "value": "4",
-            "text": "100%"
+            "text": "~100%"
           }
         ]
       }
