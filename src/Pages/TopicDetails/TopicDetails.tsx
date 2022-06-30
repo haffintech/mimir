@@ -10,7 +10,10 @@ import AddSession from '../../Components/AddSession/AddSession';
 
 import { useAppSelector } from '../../reduxSetup/hooks';
 import { useAppDispatch } from '../../reduxSetup/hooks';
-import { addSavedSession } from '../../stateSlices/savedSessions/savedSessionSlice';
+import {
+  addSavedSession,
+  deleteSavedSession,
+} from '../../stateSlices/savedSessions/savedSessionSlice';
 
 import useViewportResize from '../../utils/hooks/useViewportResize';
 import { getUniqueId } from '../../utils/misc/idGenerator';
@@ -20,6 +23,7 @@ import { RootState } from '../../reduxSetup/store';
 
 import './TopicDetails.scss';
 import { LearningTechnique } from '../../utils/misc/learningTechniques';
+import { SavedSession } from '../../Types/Session';
 
 type Props = {
   content: {
@@ -110,6 +114,10 @@ const TopicDetails = ({ content }: Props) => {
     dispatch(addSavedSession(session));
   };
 
+  const onDeleteSession = (session: SavedSession) => {
+    dispatch(deleteSavedSession(session));
+  };
+
   return (
     <div className='topic-details'>
       <h2 className='topic-details__headline'>{currentTopic.name}</h2>
@@ -128,7 +136,11 @@ const TopicDetails = ({ content }: Props) => {
           <h4 className='topic-details__past-sessions-headline'>
             {content.pastRevisions.headline}
           </h4>
-          <PastSessions content={content.pastRevisions} sessions={topicSessions} />
+          <PastSessions
+            content={content.pastRevisions}
+            sessions={topicSessions}
+            onDeleteSession={onDeleteSession}
+          />
         </div>
         {isMobile && (
           <Modal centered show={isModalOpen} onHide={toggleModal}>

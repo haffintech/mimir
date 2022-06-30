@@ -1,4 +1,7 @@
 import * as React from 'react';
+
+import { ReactComponent as IconClose } from '../../../assets/icons/close.svg';
+
 import { learningTechniques } from '../../../utils/misc/learningTechniques';
 import { SavedSession } from '../../../Types/Session';
 
@@ -11,9 +14,10 @@ type Props = {
     retentionSuffix: string;
     feedbackLabel: string;
   };
+  onDeleteSession: (session: SavedSession) => void;
 };
 
-const SessionCard = ({ content, session }: Props) => {
+const SessionCard = ({ content, session, onDeleteSession }: Props) => {
   const dateString = new Date(session.date).toLocaleDateString();
 
   const learningTechnique = learningTechniques.filter(
@@ -22,8 +26,16 @@ const SessionCard = ({ content, session }: Props) => {
 
   const retentionString = getRetentionPercentage(session.retention);
 
+  const onDeleteClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onDeleteSession(session);
+  };
+
   return (
     <div className='session-card'>
+      <div className='session-card__delete-session' onClick={onDeleteClick}>
+        <IconClose className='session-card__delete-icon' />
+      </div>
       <h6 className='session-card__headline'>{learningTechnique[0].name}</h6>
       <p className='session-card__date'>{`${content.datePrefix} ${dateString}`}</p>
       <p className='session-card__retention'>{`${retentionString} ${content.retentionSuffix}`}</p>
