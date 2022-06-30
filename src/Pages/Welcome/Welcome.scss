@@ -9,15 +9,25 @@
     padding: 40px 0;
   }
 
+  &__buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+    .btn {
+      width: 200px;
+    }
+
+    @include media-query('md') {
+      grid-template-rows: 1fr;
+      grid-template-columns: 220px 220px;
+    }
+  }
+
   &__teaser {
     color: $textGray;
     font-size: 20px;
     font-weight: 700;
     line-height: 24px;
     margin: 40px 0;
-  }
-
-  &__signup {
-    margin-left: 25px;
   }
 }
