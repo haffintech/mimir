@@ -14,5 +14,5 @@ export const getSavedAppState = () => {
     return state;
   }
 
-  return null;
+  return {};
 };
