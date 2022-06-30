@@ -11,15 +11,9 @@ import UpcomingSessions from './Components/UpcomingSessions/UpcomingSessions';
 import TopicOverview from './Pages/TopicOverview/TopicOverview';
 import TopicDetails from './Pages/TopicDetails/TopicDetails';
 
-import { useAppSelector } from './reduxSetup/hooks';
-import { RootState } from './reduxSetup/store';
-
 function App() {
   const [content, setContent] = useState<any>(null);
   const [isLoading, setIsLoading] = useState<Boolean>(true);
-  const scheduledSessions = useAppSelector(
-    (state: RootState) => state.scheduledSessions.scheduledSessions
-  );
 
   const getContent = async () => {
     const data = await fetch('/Assets/Content/en.json');
@@ -69,7 +63,6 @@ function App() {
                     ...content.dashboard.upcomingSessions,
                     learningTechniques: content.learningTechniques,
                   }}
-                  upcomingSessions={scheduledSessions}
                 />
               }
             />
