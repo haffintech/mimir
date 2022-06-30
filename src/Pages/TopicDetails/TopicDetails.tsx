@@ -112,6 +112,7 @@ const TopicDetails = ({ content }: Props) => {
     };
 
     dispatch(addSavedSession(session));
+    toggleModal();
   };
 
   const onDeleteSession = (session: SavedSession) => {
@@ -151,14 +152,16 @@ const TopicDetails = ({ content }: Props) => {
             />
           </Modal>
         )}
-        <div className='topic-details__add-session-container'>
-          <h4 className='topic-details__add-session-headline'>{content.addSession.headline}</h4>
-          <AddSession
-            content={content.addSession}
-            onClose={toggleModal}
-            onAddSession={onAddSession}
-          />
-        </div>
+        {!isMobile && (
+          <div className='topic-details__add-session-container'>
+            <h4 className='topic-details__add-session-headline'>{content.addSession.headline}</h4>
+            <AddSession
+              content={content.addSession}
+              onClose={toggleModal}
+              onAddSession={onAddSession}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
