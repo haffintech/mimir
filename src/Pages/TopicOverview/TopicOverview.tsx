@@ -11,7 +11,7 @@ import TopicPanel from '../../Components/TopicPanel/TopicPanel';
 import AddTopic from '../../Components/AddTopic/AddTopic';
 
 import { useAppSelector } from '../../reduxSetup/hooks';
-import { addTopic } from '../../stateSlices/topics/topicsSlice';
+import { addTopic, deleteTopic } from '../../stateSlices/topics/topicsSlice';
 import { addScheduledSession } from '../../stateSlices/scheduledSessions/scheduledSessionsSlice';
 
 import { Subject } from '../../Types/Subject';
@@ -80,6 +80,10 @@ const TopicOverview = ({ content }: Props) => {
     togglePopper();
   };
 
+  const onDeleteTopic = (topic: Topic) => {
+    dispatch(deleteTopic(topic));
+  };
+
   return (
     <div className='topic-overview'>
       <h2 className='topic-overview__headline'>{currentSubject.name}</h2>
@@ -101,6 +105,7 @@ const TopicOverview = ({ content }: Props) => {
         subjectId={subjectId}
         content={{ topicCards: content.topicCards, placeholder: content.placeholder }}
         onTopicClick={onTopicClick}
+        onDeleteTopic={onDeleteTopic}
       />
     </div>
   );

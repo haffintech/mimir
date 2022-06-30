@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ScheduledSession } from '../../Types/Session';
 import { deleteSubject } from '../subjects/subjectsSlice';
+import { deleteTopic } from '../topics/topicsSlice';
 
 interface scheduledSessionsState {
   scheduledSessions: ScheduledSession[];
@@ -42,6 +43,16 @@ const scheduledSessionsSlice = createSlice({
     builder.addCase(deleteSubject, (state, action) => {
       const sessionsToDelete = state.scheduledSessions.filter(
         (session) => session.subjectId === action.payload.id
+      );
+      sessionsToDelete.forEach((session) => {
+        const index = state.scheduledSessions.indexOf(session);
+        if (index < 0) console.log('scheduled session to delete not found');
+        else state.scheduledSessions.splice(index, 1);
+      });
+    });
+    builder.addCase(deleteTopic, (state, action) => {
+      const sessionsToDelete = state.scheduledSessions.filter(
+        (session) => session.topicId === action.payload.id
       );
       sessionsToDelete.forEach((session) => {
         const index = state.scheduledSessions.indexOf(session);

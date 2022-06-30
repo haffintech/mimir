@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SavedSession } from '../../Types/Session';
 import { deleteSubject } from '../subjects/subjectsSlice';
+import { deleteTopic } from '../topics/topicsSlice';
 interface savedSessionsState {
   savedSessions: SavedSession[];
 }
@@ -38,6 +39,16 @@ const savedSessionsSlice = createSlice({
     builder.addCase(deleteSubject, (state, action) => {
       const sessionsToDelete = state.savedSessions.filter(
         (session) => session.subjectId === action.payload.id
+      );
+      sessionsToDelete.forEach((session) => {
+        const index = state.savedSessions.indexOf(session);
+        if (index < 0) console.log('saved session to delete not found');
+        else state.savedSessions.splice(index, 1);
+      });
+    });
+    builder.addCase(deleteTopic, (state, action) => {
+      const sessionsToDelete = state.savedSessions.filter(
+        (session) => session.topicId === action.payload.id
       );
       sessionsToDelete.forEach((session) => {
         const index = state.savedSessions.indexOf(session);
