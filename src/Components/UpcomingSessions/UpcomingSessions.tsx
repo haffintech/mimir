@@ -2,8 +2,6 @@ import * as React from 'react';
 
 import SessionCard from './SessionCard/SessionCard';
 
-import { ScheduledSession } from '../../Types/Session';
-
 import { RootState } from '../../reduxSetup/store';
 import { useAppSelector } from '../../reduxSetup/hooks';
 
@@ -23,12 +21,14 @@ type Props = {
       recommendedTechnique: string;
     };
   };
-  upcomingSessions: ScheduledSession[];
 };
 
-const UpcomingSessions = ({ content, upcomingSessions }: Props) => {
+const UpcomingSessions = ({ content }: Props) => {
   const subjects = useAppSelector((state: RootState) => state.subjects.subjects);
   const topics = useAppSelector((state: RootState) => state.topics.topics);
+  const upcomingSessions = useAppSelector(
+    (state: RootState) => state.scheduledSessions.scheduledSessions
+  );
   const isPlaceholderVisible = upcomingSessions.length < 1;
 
   const sessionCards = upcomingSessions.map((session) => {

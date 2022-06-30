@@ -31,7 +31,22 @@
     }
   }
 
+  &__delete-subject {
+    position: absolute;
+    z-index: 1;
+    right: 5px;
+    top: 0px;
+    width: 18px;
+    height: 18px;
+  }
+
+  &__delete-icon {
+    width: 100%;
+    height: 100%;
+  }
+
   &__color-box {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;

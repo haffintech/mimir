@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  z-index: 9000;
 
   @include media-query('md') {
     height: 65px;

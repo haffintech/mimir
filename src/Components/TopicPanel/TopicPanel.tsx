@@ -23,6 +23,7 @@ type Props = {
     };
   };
   onTopicClick: (topic: Topic) => void;
+  onDeleteTopic: (topic: Topic) => void;
 };
 
 export type TopicCardData = {
@@ -31,7 +32,7 @@ export type TopicCardData = {
   revisionCount: number;
 };
 
-const TopicPanel = ({ subjectId, content, onTopicClick }: Props) => {
+const TopicPanel = ({ subjectId, content, onTopicClick, onDeleteTopic }: Props) => {
   const topics = useSelector((state: RootState) => state.topics.topics);
   const scheduledSessions = useSelector(
     (state: RootState) => state.scheduledSessions.scheduledSessions
@@ -52,6 +53,7 @@ const TopicPanel = ({ subjectId, content, onTopicClick }: Props) => {
         data={data}
         content={content.topicCards}
         onTopicClick={onTopicClick}
+        onDeleteTopic={onDeleteTopic}
       />
     );
   });

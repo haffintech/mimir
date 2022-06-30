@@ -55,9 +55,6 @@ const Dashboard = ({ content }: Props) => {
   const { width } = useViewportResize();
   const isMobile = width < breakpoints.md;
   const subjects = useAppSelector((state: RootState) => state.subjects.subjects);
-  const upcomingSessions = useAppSelector(
-    (state: RootState) => state.scheduledSessions.scheduledSessions
-  );
 
   if (isMobile) {
     return (
@@ -74,7 +71,6 @@ const Dashboard = ({ content }: Props) => {
 
       <UpcomingSessions
         content={{ ...content.upcomingSessions, learningTechniques: content.learningTechniques }}
-        upcomingSessions={upcomingSessions}
       />
     </div>
   );

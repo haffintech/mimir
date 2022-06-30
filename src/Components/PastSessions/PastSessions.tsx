@@ -17,13 +17,22 @@ type Props = {
     };
   };
   sessions: SavedSession[];
+  onDeleteSession: (session: SavedSession) => void;
 };
 
-const PastSessions = ({ content, sessions }: Props) => {
+const PastSessions = ({ content, sessions, onDeleteSession }: Props) => {
   const isPlaceholderVisible = sessions.length < 1;
   const sessionCards = sessions.map((session) => {
-    return <SessionCard key={session.id} session={session} content={content.cards} />;
+    return (
+      <SessionCard
+        key={session.id}
+        session={session}
+        content={content.cards}
+        onDeleteSession={onDeleteSession}
+      />
+    );
   });
+
   return (
     <div className='past-sessions'>
       {isPlaceholderVisible && <p className='past-sessions__placeholder'>{content.placeholder}</p>}
