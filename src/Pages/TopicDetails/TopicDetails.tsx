@@ -24,6 +24,11 @@ import { RootState } from '../../reduxSetup/store';
 import './TopicDetails.scss';
 import { LearningTechnique } from '../../utils/misc/learningTechniques';
 import { SavedSession } from '../../Types/Session';
+import {
+  addScheduledSession,
+  deleteScheduledSession,
+} from '../../stateSlices/scheduledSessions/scheduledSessionsSlice';
+import { getNextSession } from '../../utils/misc/sessionScheduling';
 
 type Props = {
   content: {
@@ -112,6 +117,14 @@ const TopicDetails = ({ content }: Props) => {
     };
 
     dispatch(addSavedSession(session));
+
+    filteredScheduledSessions.forEach((session) => {
+      dispatch(deleteScheduledSession(session));
+    });
+
+    const upcomingSession = getNextSession(currentTopic, topicSessions);
+    dispatch(addScheduledSession(upcomingSession));
+
     toggleModal();
   };
 

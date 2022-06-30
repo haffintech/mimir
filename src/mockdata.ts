@@ -1,4 +1,5 @@
 import { Subject } from './Types/Subject';
+/*
 import { ScheduledSession, SavedSession } from './Types/Session';
 import { Topic } from './Types/Topic';
 
@@ -187,3 +188,4 @@ const mockSavedSessions: SavedSession[] = [
 ];
 
 export { mockSubjects, mockScheduledSessions, mockTopics, mockSavedSessions };
+ */

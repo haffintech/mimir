@@ -2,6 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Topic } from '../../Types/Topic';
 
 import { deleteSubject } from '../subjects/subjectsSlice';
+import { addSavedSession, deleteSavedSession } from '../savedSessions/savedSessionSlice';
+
+import { getNewTopicLeitnerBox } from './../../utils/misc/sessionScheduling';
 interface TopicsState {
   topics: Topic[];
 }
@@ -38,6 +41,21 @@ const topicsSlice = createSlice({
         if (index < 0) console.log('topic to delete not found');
         else state.topics.splice(index, 1);
       });
+    });
+    builder.addCase(addSavedSession, (state, action) => {
+      const sessionTopic = state.topics.filter((topic) => topic.id === action.payload.topicId)[0];
+      const index = state.topics.indexOf(sessionTopic);
+      const newTopic = {
+        ...sessionTopic,
+        leitnerBox: getNewTopicLeitnerBox(sessionTopic, action.payload),
+      };
+      state.topics.splice(index, 1, newTopic);
+    });
+    builder.addCase(deleteSavedSession, (state, action) => {
+      const sessionTopic = state.topics.filter((topic) => topic.id === action.payload.topicId)[0];
+      const index = state.topics.indexOf(sessionTopic);
+      const newTopic = { ...sessionTopic, leitnerBox: sessionTopic.leitnerBox - 1 };
+      state.topics.splice(index, 1, newTopic);
     });
   },
 });

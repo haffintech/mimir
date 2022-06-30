@@ -6,15 +6,15 @@ export type LearningTechnique = {
 export const learningTechniques = [
   {
     id: 1,
-    name: 'pre-study',
+    name: 'Put into real-world context',
   },
   {
     id: 2,
-    name: 'in-class',
+    name: 'Make a mindmap from memory',
   },
   {
     id: 3,
-    name: 'Summarize notes from class',
+    name: 'Summarize your notes',
   },
   {
     id: 4,
@@ -35,13 +35,5 @@ export const learningTechniques = [
   {
     id: 8,
     name: 'Solve practice papers/problems',
-  },
-  {
-    id: 9,
-    name: 'Put into real-world context',
-  },
-  {
-    id: 10,
-    name: 'Make a mindmap from memory',
   },
 ];
