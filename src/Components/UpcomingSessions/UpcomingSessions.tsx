@@ -6,6 +6,7 @@ import { RootState } from '../../reduxSetup/store';
 import { useAppSelector } from '../../reduxSetup/hooks';
 
 import './UpcomingSessions.scss';
+import { ScheduledSession } from '../../Types/Session';
 
 type Props = {
   content: {
@@ -31,7 +32,14 @@ const UpcomingSessions = ({ content }: Props) => {
   );
   const isPlaceholderVisible = upcomingSessions.length < 1;
 
-  const sessionCards = upcomingSessions.map((session) => {
+  const sortedUpcomingSessions = upcomingSessions.sort(
+    (a: ScheduledSession, b: ScheduledSession) => {
+      const dateA = new Date(a.date).getTime();
+      const dateB = new Date(b.date).getTime();
+      return dateA - dateB;
+    }
+  );
+  const sessionCards = sortedUpcomingSessions.map((session) => {
     const sessionSubject = subjects.filter((subject) => subject.id === session.subjectId);
     const subjectName = sessionSubject[0].name;
 
