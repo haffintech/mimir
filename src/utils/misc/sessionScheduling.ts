@@ -58,6 +58,8 @@ const getNextStudyDate = (leitnerBox: number, topicSessions: SavedSession[]) => 
     return addDaysToDate(today, 1).toISOString();
   }
   const lastRevision = new Date(lastSession.date);
+  console.log(lastRevision);
+
   const days = Math.round(Math.pow(leitnerBox, 2.25) + 3);
   const newDate = addDaysToDate(lastRevision, days);
   return newDate.toISOString();
@@ -74,7 +76,9 @@ export const getNewTopicLeitnerBox = (topic: Topic, lastSession: SavedSession) =
   const retention = lastSession.retention;
   if (retention === 1) return 0;
   if (retention === 2) return Math.floor(currentBox / 2);
-  if (retention === 3) return currentBox > 3 ? currentBox - 1 : currentBox;
+  if (retention === 3 && currentBox < 3) return currentBox + 1;
+  if (retention === 3 && currentBox === 3) return currentBox;
+  if (retention === 3 && currentBox > 3) return currentBox - 1;
 
   return currentBox + 1;
 };

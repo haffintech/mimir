@@ -74,7 +74,7 @@ const TopicOverview = ({ content }: Props) => {
       id: getUniqueId(),
       subjectId: currentSubject.id,
       name: name,
-      leitnerBox: 0,
+      leitnerBox: 1,
     };
     dispatch(addTopic(topic));
 
