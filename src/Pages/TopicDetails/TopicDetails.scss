@@ -6,7 +6,7 @@
     font-size: 28px;
     line-height: 32px;
     font-weight: 400;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   &__container {
@@ -26,6 +26,7 @@
     font-size: 28px;
     line-height: 32px;
     font-weight: 400;
+    margin-bottom: 10px;
   }
 
   &__past-sessions-container {
@@ -39,7 +40,7 @@
   }
 
   &__headline {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   &__add-session-button {
@@ -53,7 +54,7 @@
   }
 
   &__add-session-container {
-    margin-top: 30px;
+    margin-top: 20px;
     grid-row-start: 2;
   }
 }
