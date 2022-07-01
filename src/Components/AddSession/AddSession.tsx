@@ -43,7 +43,7 @@ const AddSession = ({ content, onClose, onAddSession }: Props) => {
   );
 
   const [retentionValue, setRetentionValue] = useState<number>();
-  const [sessionDate, setSessionDate] = useState<Date>();
+  const [sessionDate, setSessionDate] = useState<Date>(new Date());
   const [feedbackText, setFeedbackText] = useState<string>('');
   const [selectedTechnique, setSelectedTechnique] = useState<LearningTechnique>();
   const [isSaveEnabled, setIsSaveEnabled] = useState<boolean>(false);
@@ -93,7 +93,7 @@ const AddSession = ({ content, onClose, onAddSession }: Props) => {
   const resetValues = () => {
     setFeedbackText('');
     setSelectedTechnique(undefined);
-    setSessionDate(undefined);
+    setSessionDate(new Date());
     setRetentionValue(undefined);
     setAreButtonsSelected(initialButtonSelectionStates);
   };
