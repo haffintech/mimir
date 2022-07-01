@@ -3,6 +3,12 @@
 .past-sessions {
   margin-top: 20px;
 
+  @include media-query('md') {
+    margin-top: 0;
+    max-height: 767px;
+    overflow-y: auto;
+  }
+
   &__placeholder {
     @include media-query('md') {
       background-color: $siteBackground;
@@ -13,10 +19,9 @@
 
     @include media-query('md') {
       padding: 20px;
-    }
-
-    @include media-query('lg') {
-      padding: 30px;
+      :last-child {
+        margin-bottom: 0;
+      }
     }
 
     @include media-query('lg') {
@@ -24,6 +29,7 @@
       grid-template-columns: 1fr 1fr;
       place-items: center;
       gap: 30px;
+      padding: 30px;
     }
   }
 }

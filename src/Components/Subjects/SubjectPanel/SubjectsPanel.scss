@@ -2,7 +2,7 @@
 
 .subjects-panel {
   @include media-query('md') {
-    height: 280px;
+    height: 310px;
   }
 
   &__cards-container {

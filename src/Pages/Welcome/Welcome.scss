@@ -1,6 +1,8 @@
 @import '../../sass/shared.scss';
 
 .welcome {
+  padding: 20px 0;
+
   @include media-query('md') {
     padding: 30px 0;
   }

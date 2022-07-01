@@ -84,6 +84,11 @@ const TopicDetails = ({ content }: Props) => {
   const filteredTopics = topics.filter((topic) => topic.id === topicId);
   const currentTopic = filteredTopics[0];
   const topicSessions = savedSessions.filter((session) => session.topicId === currentTopic.id);
+  const sortedTopicSessions = topicSessions.sort((a: SavedSession, b: SavedSession) => {
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+    return dateA - dateB;
+  });
   const filteredScheduledSessions = scheduledSessions.filter(
     (session) => session.topicId === currentTopic.id
   );
@@ -152,7 +157,7 @@ const TopicDetails = ({ content }: Props) => {
           </h4>
           <PastSessions
             content={content.pastRevisions}
-            sessions={topicSessions}
+            sessions={sortedTopicSessions}
             onDeleteSession={onDeleteSession}
           />
         </div>
