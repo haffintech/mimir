@@ -5,10 +5,11 @@
 
   &__headline {
     margin-bottom: 25px;
+    margin-top: 10px;
 
     @include media-query('md') {
       background-color: $siteBackground;
-      margin-bottom: 0;
+      margin: 0;
       padding-bottom: 15px;
     }
   }
