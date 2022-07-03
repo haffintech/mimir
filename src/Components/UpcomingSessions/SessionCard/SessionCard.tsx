@@ -16,8 +16,9 @@ type Props = {
   };
   subjectName: string;
   topicName: string;
+  onClick: (session: ScheduledSession) => void;
 };
-const SessionCard = ({ session, content, subjectName, topicName }: Props) => {
+const SessionCard = ({ session, content, subjectName, topicName, onClick }: Props) => {
   const dueDate = new Date(session.date);
   const dueDateClassname = classNames({
     'upcoming-session-card__due-date': true,
@@ -36,10 +37,14 @@ const SessionCard = ({ session, content, subjectName, topicName }: Props) => {
       <p className='upcoming-session-card__technique'>{learningTechnique[0].name}</p>
       <p className={dueDateClassname}>{`Due ${dueDate.toLocaleDateString()}`}</p>
       <div className='upcoming-session-card__button-group'>
-        <Button size='sm' variant='outline-secondary'>
-          {content.reschedule}
+        <Button
+          size='sm'
+          onClick={() => {
+            onClick(session);
+          }}
+        >
+          {content.addSessionNow}
         </Button>
-        <Button size='sm'>{content.addSessionNow}</Button>
       </div>
     </div>
   );
