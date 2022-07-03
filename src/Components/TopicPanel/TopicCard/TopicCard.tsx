@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { MouseEvent } from 'react';
-import Button from 'react-bootstrap/Button';
 import classNames from 'classnames';
 import { ReactComponent as IconClose } from '../../../assets/icons/close.svg';
 
@@ -40,14 +39,6 @@ const TopicCard = ({ content, onTopicClick, data, onDeleteTopic }: Props) => {
     onTopicClick(topic);
   };
 
-  const onReschedule = () => {
-    console.log('reschedule');
-  };
-
-  const onAddSession = () => {
-    console.log('add session');
-  };
-
   const learningTechnique = learningTechniques.filter(
     (technique) => technique.id === nextSession.learningTechnique
   )[0];
@@ -68,19 +59,6 @@ const TopicCard = ({ content, onTopicClick, data, onDeleteTopic }: Props) => {
         <p className='topic__technique-label'>{content.techniqueLabel}</p>
         <p className='topic__next-technique'>{learningTechnique.name}</p>
         <p className={dueDateClassName}>{`${content.dueLabel} ${formattedSessionDate}`}</p>
-      </div>
-      <div className='topic__button-container'>
-        <Button
-          size='sm'
-          variant='outline-secondary'
-          className='topic__reschedule-button'
-          onClick={onReschedule}
-        >
-          {content.rescheduleButton}
-        </Button>
-        <Button size='sm' className='topic__add-session-button' onClick={onAddSession}>
-          {content.addSessionButton}
-        </Button>
       </div>
     </div>
   );

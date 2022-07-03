@@ -8,9 +8,14 @@
   border: 2px solid $siteBackground;
   margin-bottom: 30px;
 
+  @include media-query('md') {
+    width: 299px;
+  }
+
   @include media-query('lg') {
     height: 280px;
     margin-bottom: 0;
+    width: 330px;
   }
 
   &__delete-session {
@@ -34,6 +39,7 @@
   &__headline {
     font-size: 24px;
     line-height: 28px;
+    height: 56px;
     font-weight: 600;
     margin-bottom: 15px;
     margin-right: 20px;

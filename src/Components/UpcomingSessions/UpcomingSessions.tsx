@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import SessionCard from './SessionCard/SessionCard';
 
@@ -31,20 +32,26 @@ const UpcomingSessions = ({ content }: Props) => {
     (state: RootState) => state.scheduledSessions.scheduledSessions
   );
   const isPlaceholderVisible = upcomingSessions.length < 1;
+  const navigate = useNavigate();
 
-  const sortedUpcomingSessions = upcomingSessions.sort(
-    (a: ScheduledSession, b: ScheduledSession) => {
+  const onAddSessionClick = (session: ScheduledSession) => {
+    const url = `/topics/${session.subjectId}/${session.topicId}`;
+    navigate(url);
+  };
+
+  const sortedUpcomingSessions = upcomingSessions
+    .slice()
+    .sort((a: ScheduledSession, b: ScheduledSession) => {
       const dateA = new Date(a.date).getTime();
       const dateB = new Date(b.date).getTime();
       return dateA - dateB;
-    }
-  );
+    });
   const sessionCards = sortedUpcomingSessions.map((session) => {
     const sessionSubject = subjects.filter((subject) => subject.id === session.subjectId);
     const subjectName = sessionSubject[0].name;
 
-    const sessionTopic = topics.filter((topic) => topic.id === session.topicId);
-    const topicName = sessionTopic[0].name;
+    const sessionTopic = topics.filter((topic) => topic.id === session.topicId)[0];
+    const topicName = sessionTopic.name;
 
     return (
       <SessionCard
@@ -53,6 +60,7 @@ const UpcomingSessions = ({ content }: Props) => {
         content={content.sessionCardContent}
         topicName={topicName}
         subjectName={subjectName}
+        onClick={onAddSessionClick}
       />
     );
   });
