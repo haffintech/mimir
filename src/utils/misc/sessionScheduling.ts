@@ -75,7 +75,7 @@ export const getNewTopicLeitnerBox = (topic: Topic, lastSession: SavedSession) =
   const currentBox = topic.leitnerBox;
   const retention = lastSession.retention;
   if (retention === 1) return 1;
-  if (retention === 2) return Math.floor(currentBox / 2);
+  if (retention === 2) return Math.ceil(currentBox / 2);
   if (retention === 3 && currentBox < 3) return currentBox + 1;
   if (retention === 3 && currentBox === 3) return currentBox;
   if (retention === 3 && currentBox > 3) return currentBox - 1;
