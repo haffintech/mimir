@@ -71,8 +71,6 @@ function App() {
               path='/topics/:subjectId/:topicId'
               element={<TopicDetails content={content.savedSessions} />}
             />
-            <Route path='/about' element={<></>} />
-            <Route path='/contact' element={<></>} />
           </Routes>
         </div>
       </Router>
